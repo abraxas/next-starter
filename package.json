@@ -1,0 +1,46 @@
+{
+  "name": "next-start",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:push": "dotenv -e .env.local yarn drizzle-kit push"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@lucia-auth/adapter-drizzle": "^1.0.7",
+    "@lucia-auth/adapter-postgresql": "^3.1.2",
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "@prisma/adapter-pg": "^5.15.1",
+    "@prisma/client": "5.15.1",
+    "arctic": "^1.9.1",
+    "axios": "^1.7.2",
+    "drizzle-orm": "^0.31.2",
+    "lucia": "^3.2.0",
+    "next": "14.2.4",
+    "next-auth": "^5.0.0-beta.19",
+    "next-client-cookies": "^1.1.1",
+    "pg": "^8.12.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-query": "^3.39.3",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/pg": "^8.11.6",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "prettier": "^3.3.2",
+    "prisma": "^5.15.1",
+    "typescript": "^5"
+  }
+}

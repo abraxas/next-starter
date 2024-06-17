@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/logout/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/lib/auth/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/providers/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/auth/[...nextauth]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/test/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/test/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(login)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(login)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(login)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/Link.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/server/sessionProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server/sessionProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drizzle/db.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/drizzle/db.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drizzle/relations.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/drizzle/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/drizzle/schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2hzBIDmzm2muENFEKQbJG7GW9Vp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "javascript.nodejs.core.library.configured.version": "21.6.2",
+    "javascript.nodejs.core.library.typings.version": "20.14.2",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/app/(login)",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node",
+    "nodejs_package_manager_path": "yarn",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(login)" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\login\components" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\login" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\lib\lucia.ts" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="" />
+      <created>1718586943454</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718586943454</updated>
+      <workItem from="1718586944525" duration="2227000" />
+      <workItem from="1719317845114" duration="26683000" />
+      <workItem from="1719426736987" duration="3287000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
