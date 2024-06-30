@@ -29,6 +29,9 @@ type LoginFormProps = {
 export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
   const router = useRouter();
   const [loginError, setLoginError] = useState<string | undefined>(undefined);
+  const flexColorModeValue = useColorModeValue("gray.50", "gray.800");
+  const boxColorModeValue = useColorModeValue("white", "gray.700");
+
   const loginAction = async (formData: FormData) => {
     const result = await credentialLoginAction(formData);
     if (result?.error) {
@@ -37,7 +40,8 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
   };
 
   if (process.env.NEXT_PUBLIC_AUTH_AUTO_REDIRECT) {
-    return router.push(`/auth/${process.env.NEXT_PUBLIC_AUTH_AUTO_REDIRECT}`);
+    router.push(`/auth/${process.env.NEXT_PUBLIC_AUTH_AUTO_REDIRECT}`);
+    return <div />;
   }
 
   return (
@@ -45,7 +49,7 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      bg={flexColorModeValue}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -54,12 +58,7 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
             to enjoy all of our cool features ✌️
           </Text>
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
+        <Box rounded={"lg"} bg={boxColorModeValue} boxShadow={"lg"} p={8}>
           <Stack spacing={4}>
             <Button
               onClick={() => router.push("/auth/google")}
