@@ -1,11 +1,13 @@
-// app/login/github/callback/route.ts
 import { cookies } from "next/headers";
 import { generateCodeVerifier, OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
 import { google, lucia } from "@/app/lib/auth";
-import { db } from "@/drizzle/db";
-import { and, eq } from "drizzle-orm";
-import { account, user } from "@/drizzle/schema";
+import { serverContainer } from "@/services/serverContainer";
+import { PrismaService } from "@/services/server/prisma";
+import { TYPES } from "@/services/types";
+
+const prismaService = serverContainer.get<PrismaService>(TYPES.PrismaService);
+const db = prismaService.client;
 
 export async function GET(request: Request): Promise<Response> {
   const url = new URL(request.url);
@@ -33,21 +35,18 @@ export async function GET(request: Request): Promise<Response> {
     );
     const googleUser: GoogleUser = await googleUserResponse.json();
 
-    let existingAccount:
-      | { userId?: string; user?: { id: string } }
-      | undefined = await db.query.account
-      .findFirst({
-        where: and(
-          eq(account.provider, "google"),
-          eq(account.providerAccountId, googleUser.sub),
-        ),
-        with: {
-          user: true,
-        },
-      })
-      .execute();
-    let existingUser: { id: string };
+    console.log(1);
 
+    let existingAccount = await db.account.findFirst({
+      where: {
+        provider: "google",
+        providerAccountId: googleUser.sub,
+      },
+      include: {
+        user: true,
+      },
+    });
+    console.log(2);
     if (existingAccount?.user) {
       const existingUser = existingAccount.user;
       const session = await lucia.createSession(existingUser!.id, {});
@@ -63,37 +62,32 @@ export async function GET(request: Request): Promise<Response> {
           Location: "/",
         },
       });
-      // }
     }
-
+    console.log(3);
     //create user and account
     const userId = generateIdFromEntropySize(10); // 16 characters long
+    console.log(4);
+    const addedUser = await db.user.create({
+      data: {
+        id: userId,
+        email: googleUser.email,
+        image: googleUser.picture,
+        updatedAt: new Date(),
+      },
+    });
+    console.log(5);
 
-    existingUser = (
-      await db
-        .insert(user)
-        .values({
-          id: userId,
-          email: googleUser.email,
-          image: googleUser.picture,
-          updatedAt: new Date(),
-        })
-        .returning()
-    )[0];
+    const addedAccount = await db.account.create({
+      data: {
+        userId: userId,
+        provider: "google",
+        providerAccountId: googleUser.sub,
+        updatedAt: new Date(),
+      },
+    });
 
-    existingAccount = (
-      await db
-        .insert(account)
-        .values({
-          userId: userId,
-          provider: "google",
-          providerAccountId: googleUser.sub,
-          updatedAt: new Date(),
-        })
-        .returning()
-    )[0];
-
-    const session = await lucia.createSession(existingUser.id.toString(), {});
+    console.log(6);
+    const session = await lucia.createSession(addedUser.id.toString(), {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
       sessionCookie.name,
@@ -107,6 +101,8 @@ export async function GET(request: Request): Promise<Response> {
       },
     });
   } catch (e) {
+    console.log("NOOOOOO");
+    console.dir(e);
     // the specific error message depends on the provider
     if (e instanceof OAuth2RequestError) {
       // invalid code

@@ -1,13 +1,15 @@
 "use server";
 
 import { ActionResult } from "next/dist/server/app-render/types";
-import { UserSelectModel } from "@/drizzle/types";
-import { db } from "@/drizzle/db";
-import { user } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
 import { lucia } from "@/app/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { serverContainer } from "@/services/serverContainer";
+import { PrismaService } from "@/services/server/prisma";
+import { TYPES } from "@/services/types";
+
+const prismaService = serverContainer.get<PrismaService>(TYPES.PrismaService);
+const db = prismaService.client;
 
 export async function login(
   foo: any,
@@ -16,12 +18,13 @@ export async function login(
   const password = foo.get("password");
 
   const username = email;
-  const existingUsers = await db
-    .select()
-    .from(user)
-    .where(eq(user.email, username))
-    .limit(1);
-  const existingUser = existingUsers[0];
+
+  const existingUser = await db.user.findFirst({
+    where: {
+      email: username,
+    },
+  });
+
   if (!existingUser) {
     return {
       error: "Incorrect email or password",

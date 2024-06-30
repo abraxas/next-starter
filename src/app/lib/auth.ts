@@ -1,23 +1,18 @@
 import { Lucia, Session, User } from "lucia";
-import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
-import { db, pool } from "../../drizzle/db";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { Google } from "arctic";
+import { serverContainer } from "@/services/serverContainer";
+import { PrismaService } from "@/services/server/prisma";
+import { TYPES } from "@/services/types";
+import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
+import { User as UserModel } from "@prisma/client";
 
-import { session, user } from "@/drizzle/schema";
-import { SessionSelectModel, UserSelectModel } from "@/drizzle/types";
-import { NodePostgresAdapter } from "@lucia-auth/adapter-postgresql";
-import { revalidatePath } from "next/cache";
+const prismaService = serverContainer.get<PrismaService>(TYPES.PrismaService);
+const db = prismaService.client;
 
-// import { webcrypto } from "crypto";
-// globalThis.crypto = webcrypto as Crypto;
+const adapter = new PrismaAdapter(db.session, db.user);
 
-const adapter = new DrizzlePostgreSQLAdapter(db, session, user);
-// const adapter = new NodePostgresAdapter(pool, {
-//     user: "user",
-//     session: "session"
-// });
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
     attributes: {
@@ -57,7 +52,15 @@ export const validateRequest = cache(
       };
     }
 
-    const result = await lucia.validateSession(sessionId);
+    console.log("WE ARE ABOUT TO VALIDATE");
+    let result: any;
+    try {
+      result = await lucia.validateSession(sessionId);
+    } catch (e) {
+      console.log("NOOOO");
+      console.dir(e);
+      throw e;
+    }
     // next.js throws when you attempt to set cookie when rendering page
     try {
       if (result.session && result.session.fresh) {
@@ -89,6 +92,6 @@ export const logout = async () => {
 declare module "lucia" {
   interface Register {
     Lucia: typeof lucia;
-    DatabaseUserAttributes: Omit<typeof user, "id">;
+    DatabaseUserAttributes: Omit<UserModel, "id">;
   }
 }

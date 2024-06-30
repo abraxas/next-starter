@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { Container } from "inversify";
 import ClientConfig from "@/services/client/ClientConfig";
 import { TYPES } from "@/services/types";
