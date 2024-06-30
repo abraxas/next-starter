@@ -37,17 +37,24 @@ model Session {
   user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
+enum PasswordAlgorithm {
+  PLAINTEXT
+  BCRYPT
+  ARGON2
+}
+
 model User {
-  id             String    @id
-  name           String?
-  email          String?
-  hashedPassword String?
-  emailVerified  DateTime?
-  image          String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime
-  organizationId String?
-  username       String?
-  accounts       Account[]
-  sessions       Session[]
+  id                String             @id
+  name              String?
+  email             String?
+  hashedPassword    String?
+  passwordAlgorithm PasswordAlgorithm?
+  emailVerified     DateTime?
+  image             String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime
+  organizationId    String?
+  username          String?
+  accounts          Account[]
+  sessions          Session[]
 }
