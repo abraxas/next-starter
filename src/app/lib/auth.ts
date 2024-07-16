@@ -8,7 +8,7 @@ import { TYPES } from "@/services/types";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { User as UserModel } from "@prisma/client";
 
-const prismaService = serverContainer.get<PrismaService>(TYPES.PrismaService);
+const prismaService = serverContainer.get<PrismaService>(PrismaService);
 const db = prismaService.client;
 
 const adapter = new PrismaAdapter(db.session, db.user);

@@ -19,13 +19,13 @@ export default class ClientConfig {
   authCredentials?: boolean;
   authAutoRedirect?: string;
   multiTenant?: boolean;
-  defaultOrganization?: string;
+  defaultOrganizationName?: string;
 
   public constructor() {
     const config = ConfigSchema.parse(process.env);
     this.authCredentials = config.NEXT_PUBLIC_AUTH_CREDENTIALS;
     this.authAutoRedirect = config.NEXT_PUBLIC_AUTH_AUTO_REDIRECT;
     this.multiTenant = config.NEXT_PUBLIC_MULTITENANT;
-    this.defaultOrganization = config.NEXT_PUBLIC_DEFAULT_ORGANIZATION;
+    this.defaultOrganizationName = config.NEXT_PUBLIC_DEFAULT_ORGANIZATION;
   }
 }

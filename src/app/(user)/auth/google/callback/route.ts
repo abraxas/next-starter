@@ -6,7 +6,7 @@ import { serverContainer } from "@/services/serverContainer";
 import { PrismaService } from "@/services/server/prisma";
 import { TYPES } from "@/services/types";
 
-const prismaService = serverContainer.get<PrismaService>(TYPES.PrismaService);
+const prismaService = serverContainer.get<PrismaService>(PrismaService);
 const db = prismaService.client;
 
 export async function GET(request: Request): Promise<Response> {
