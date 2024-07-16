@@ -17,7 +17,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { signIn } from "next-auth/react";
 import { useSession } from "@/app/providers/server/sessionProvider";
 import Link from "next/link";
 import { logoutAction } from "@/app/(web)/components/actions";

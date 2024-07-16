@@ -7,7 +7,9 @@
     <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Various service code in prep for test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +112,7 @@
       <workItem from="1719537516625" duration="600000" />
       <workItem from="1719578075556" duration="8149000" />
       <workItem from="1719708361377" duration="4371000" />
-      <workItem from="1721082601667" duration="7888000" />
+      <workItem from="1721082601667" duration="9424000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />

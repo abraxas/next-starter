@@ -2,7 +2,6 @@
 "use client";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import { SessionProvider } from "next-auth/react";
 import { ColorModeScript } from "@chakra-ui/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
