@@ -2,9 +2,9 @@ import { Lucia, Session, User } from "lucia";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { Google } from "arctic";
-import { serverContainer } from "@/services/serverContainer";
-import { PrismaService } from "@/services/server/prisma";
-import { TYPES } from "@/services/types";
+import { serverContainer } from "@services/serverContainer";
+import { PrismaService } from "@services/server/prisma";
+import { TYPES } from "@services/types";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { User as UserModel } from "@prisma/client";
 

@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import { z } from "zod";
-import ClientConfig from "@/services/client/config/ClientConfig";
+import ClientConfig from "@services/client/config/ClientConfig";
 
 const ServerConfigSchema = z.object({
   DATABASE_URL: z.string(),

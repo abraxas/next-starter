@@ -4,9 +4,9 @@ import { ActionResult } from "next/dist/server/app-render/types";
 import { lucia } from "@/app/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { serverContainer } from "@/services/serverContainer";
-import { PrismaService } from "@/services/server/prisma";
-import { TYPES } from "@/services/types";
+import { serverContainer } from "@services/serverContainer";
+import { PrismaService } from "@services/server/prisma";
+import { TYPES } from "@services/types";
 
 const prismaService = serverContainer.get<PrismaService>(PrismaService);
 const db = prismaService.client;

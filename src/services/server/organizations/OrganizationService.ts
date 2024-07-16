@@ -1,6 +1,7 @@
 import { injectable } from "inversify";
-import ServerConfig from "@/services/server/config/ServerConfig";
-import { PrismaService } from "@/services/server/prisma";
+import ServerConfig from "@services/server/config/ServerConfig";
+import { PrismaService } from "@services/server/prisma";
+import { Prisma, Organization } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 @injectable()
@@ -10,7 +11,7 @@ export class OrganizationService {
     private prismaService: PrismaService,
   ) {}
 
-  async getOrganizations() {
+  async getOrganizations(): Promise<Organization[]> {
     if (!this.isMultitenant()) {
       return [await this.getDefaultOrganization()];
     }
@@ -32,7 +33,7 @@ export class OrganizationService {
     return this.serverConfig.multiTenant;
   }
 
-  async createOrganization(name: string) {
+  async createOrganization(name: string): Promise<Organization> {
     return this.prismaService.client.organization.create({
       data: {
         id: uuidv4(),
@@ -43,16 +44,15 @@ export class OrganizationService {
     });
   }
 
-  async getDefaultOrganization() {
-    if (!this.serverConfig.defaultOrganizationName) {
-      return undefined;
-    }
+  async getDefaultOrganization(): Promise<Organization> {
+    let defaultOrganizationName =
+      this.serverConfig.defaultOrganizationName ?? "Global";
     const defaultOrganization =
       await this.prismaService.client.organization.findFirst({
-        where: { name: this.serverConfig.defaultOrganizationName },
+        where: { name: defaultOrganizationName },
       });
     if (!defaultOrganization) {
-      return this.createOrganization(this.serverConfig.defaultOrganizationName);
+      return this.createOrganization(defaultOrganizationName);
     }
     return defaultOrganization;
   }

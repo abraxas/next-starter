@@ -2,8 +2,8 @@ import "reflect-metadata";
 
 import { Container } from "inversify";
 import { OrganizationService } from "./OrganizationService";
-import { PrismaService } from "@/services/server/prisma";
-import ServerConfig from "@/services/server/config/ServerConfig";
+import { PrismaService } from "@services/server/prisma";
+import ServerConfig from "@services/server/config/ServerConfig";
 
 // Mock implementations
 const mockServerConfig = {

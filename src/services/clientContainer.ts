@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
 import { Container } from "inversify";
-import ClientConfig from "@/services/client/config/ClientConfig";
-import { TYPES } from "@/services/types";
+import ClientConfig from "@services/client/config/ClientConfig";
+import { TYPES } from "@services/types";
 
 const clientContainer = new Container();
 clientContainer.bind(ClientConfig).to(ClientConfig);

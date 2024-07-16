@@ -2,9 +2,9 @@ import { cookies } from "next/headers";
 import { generateCodeVerifier, OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
 import { google, lucia } from "@/app/lib/auth";
-import { serverContainer } from "@/services/serverContainer";
-import { PrismaService } from "@/services/server/prisma";
-import { TYPES } from "@/services/types";
+import { serverContainer } from "@services/serverContainer";
+import { PrismaService } from "@services/server/prisma";
+import { TYPES } from "@services/types";
 
 const prismaService = serverContainer.get<PrismaService>(PrismaService);
 const db = prismaService.client;
