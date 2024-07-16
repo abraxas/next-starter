@@ -10,7 +10,8 @@
     "db:push:drizzle": "dotenv -e .env.local yarn drizzle-kit push",
     "db:push": "dotenv -e .env.local yarn prisma db push",
     "db:pull": "dotenv -e .env.local yarn prisma db pull",
-    "db:studio": "dotenv -e .env.local yarn prisma studio"
+    "db:studio": "dotenv -e .env.local yarn prisma studio",
+    "test": "jest"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -36,6 +37,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20",
     "@types/pg": "^8.11.6",
     "@types/react": "^18",
@@ -45,8 +49,11 @@
     "drizzle-kit": "^0.22.7",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.3.2",
     "prisma": "^5.16.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

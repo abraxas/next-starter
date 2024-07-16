@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="The prisma-port is real.  It's just cleaner">
-      <change afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Various service code in prep for test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/client/ClientConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/clientContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/clientContainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/serverContainer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +34,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "21.6.2",
-    "javascript.nodejs.core.library.typings.version": "20.14.2",
+    "javascript.nodejs.core.library.configured.version": "21.7.1",
+    "javascript.nodejs.core.library.typings.version": "20.14.10",
     "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -54,7 +46,7 @@
     "npm.db:studio.executor": "Run",
     "npm.dev.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.notifications",
+    "settings.editor.selected.configurable": "JavaScript.Libraries",
     "ts.external.directory.path": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -118,7 +110,7 @@
       <workItem from="1719537516625" duration="600000" />
       <workItem from="1719578075556" duration="8149000" />
       <workItem from="1719708361377" duration="4371000" />
-      <workItem from="1721082601667" duration="6251000" />
+      <workItem from="1721082601667" duration="7888000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />
@@ -128,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719710752900</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Various service code in prep for test">
+      <option name="closed" value="true" />
+      <created>1721134731256</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721134731256</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="The prisma-port is real.  It's just cleaner" />
-    <option name="LAST_COMMIT_MESSAGE" value="The prisma-port is real.  It's just cleaner" />
+    <MESSAGE value="Various service code in prep for test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various service code in prep for test" />
   </component>
 </project>
