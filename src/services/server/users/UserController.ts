@@ -1,4 +1,6 @@
-import { injectable } from "inversify";
+import "reflect-metadata";
+
+import { inject, injectable } from "inversify";
 import { UserService } from "@services/server/users/UserService";
 import { produce } from "immer";
 import { lucia } from "@/lib/auth";

@@ -5,43 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Admin page organization table stuff">
-      <change afterPath="$PROJECT_DIR$/scripts/promoteUserToAdmin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/login/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/components/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/Form.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/table/Table.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/server/users/UserController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/server/users/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/logout/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/logout/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/lib/auth/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server/sessionProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server/sessionProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/clientContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/clientContainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/prisma.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/serverContainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/users/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,31 +34,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.All Tests.executor": "Run",
-    "Jest.OrganizationService.should return default organization for single tenant.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "javascript.nodejs.core.library.configured.version": "21.7.1",
-    "javascript.nodejs.core.library.typings.version": "20.14.10",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest",
-    "nodejs_interpreter_path": "wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node",
-    "nodejs_package_manager_path": "yarn",
-    "npm.db:studio.executor": "Run",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
-    "ts.external.directory.path": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrganizationService.should return default organization for single tenant.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.7.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.14.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.db:studio.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />

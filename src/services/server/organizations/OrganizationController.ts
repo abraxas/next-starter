@@ -1,4 +1,6 @@
-import { injectable } from "inversify";
+import "reflect-metadata";
+
+import { inject, injectable } from "inversify";
 import { OrganizationService } from "@services/server/organizations/OrganizationService";
 import { UserService } from "@services/server/users/UserService";
 import { Prisma } from "@prisma/client";

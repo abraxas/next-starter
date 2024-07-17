@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { injectable } from "inversify";
 import { PrismaService } from "@services/server/prisma";
 import { validateRequest } from "@/lib/auth";
