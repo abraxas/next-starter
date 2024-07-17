@@ -1,15 +1,15 @@
 import { cookies } from "next/headers";
 import { generateCodeVerifier, OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
-import { google, lucia } from "@/app/lib/auth";
+import { google, lucia } from "@/lib/auth";
 import { serverContainer } from "@services/serverContainer";
 import { PrismaService } from "@services/server/prisma";
 import { TYPES } from "@services/types";
 
-const prismaService = serverContainer.get<PrismaService>(PrismaService);
-const db = prismaService.client;
-
 export async function GET(request: Request): Promise<Response> {
+  const prismaService = serverContainer.get<PrismaService>(PrismaService);
+  const db = prismaService.client;
+
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
@@ -35,8 +35,6 @@ export async function GET(request: Request): Promise<Response> {
     );
     const googleUser: GoogleUser = await googleUserResponse.json();
 
-    console.log(1);
-
     let existingAccount = await db.account.findFirst({
       where: {
         provider: "google",
@@ -46,7 +44,6 @@ export async function GET(request: Request): Promise<Response> {
         user: true,
       },
     });
-    console.log(2);
     if (existingAccount?.user) {
       const existingUser = existingAccount.user;
       const session = await lucia.createSession(existingUser!.id, {});

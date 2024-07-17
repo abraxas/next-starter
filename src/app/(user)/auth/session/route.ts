@@ -1,7 +1,7 @@
-import { lucia, validateRequest } from "@/app/lib/auth";
+import { serverContainer } from "@services/serverContainer";
+import { UserController } from "@services/server/users/UserController";
 
 export async function GET() {
-  const session = await validateRequest();
-  const sessionCookieName = lucia.sessionCookieName;
-  return Response.json({ ...session, sessionCookieName });
+  const userController = serverContainer.get(UserController);
+  return userController.getSession();
 }

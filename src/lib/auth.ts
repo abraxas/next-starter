@@ -52,13 +52,10 @@ export const validateRequest = cache(
       };
     }
 
-    console.log("WE ARE ABOUT TO VALIDATE");
     let result: any;
     try {
       result = await lucia.validateSession(sessionId);
     } catch (e) {
-      console.log("NOOOO");
-      console.dir(e);
       throw e;
     }
     // next.js throws when you attempt to set cookie when rendering page

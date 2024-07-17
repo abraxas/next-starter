@@ -12,47 +12,67 @@ export class OrganizationService {
   ) {}
 
   async getOrganizations(): Promise<Organization[]> {
-    if (!this.isMultitenant()) {
+    if (!this.isMultiTenant()) {
       return [await this.getDefaultOrganization()];
     }
-    return this.prismaService.client.organization.findMany();
+    const organizations =
+      await this.prismaService.client.organization.findMany();
+    if (!organizations.length) {
+      return [await this.getDefaultOrganization()];
+    }
+    return organizations;
   }
 
   async getOrganizationById(id: string) {
+    if (!this.isMultiTenant()) return this.getDefaultOrganization();
     return this.prismaService.client.organization.findUnique({
       where: { id },
     });
   }
-  async getOrganizationByName(name: string) {
+  async getOrganizationBySlug(slug: string) {
+    if (!this.isMultiTenant()) return this.getDefaultOrganization();
     return this.prismaService.client.organization.findUnique({
-      where: { name },
+      where: { slug },
     });
   }
 
-  async isMultitenant() {
+  isMultiTenant() {
     return this.serverConfig.multiTenant;
   }
 
-  async createOrganization(name: string): Promise<Organization> {
+  async createOrganization(data: {
+    slug: string;
+    name: string;
+  }): Promise<Organization> {
     return this.prismaService.client.organization.create({
       data: {
         id: uuidv4(),
-        name,
         createdAt: new Date(),
         updatedAt: new Date(),
+        ...data,
       },
     });
   }
 
+  async updateOrganization(id: string, data: Prisma.OrganizationUpdateInput) {
+    return this.prismaService.client.organization.update({
+      where: { id },
+      data,
+    });
+  }
+
   async getDefaultOrganization(): Promise<Organization> {
-    let defaultOrganizationName =
-      this.serverConfig.defaultOrganizationName ?? "Global";
+    let defaultOrganizationSlug =
+      this.serverConfig.defaultOrganizationSlug ?? "default";
     const defaultOrganization =
-      await this.prismaService.client.organization.findFirst({
-        where: { name: defaultOrganizationName },
+      await this.prismaService.client.organization.findUnique({
+        where: { slug: defaultOrganizationSlug },
       });
     if (!defaultOrganization) {
-      return this.createOrganization(defaultOrganizationName);
+      return this.createOrganization({
+        name: defaultOrganizationSlug,
+        slug: defaultOrganizationSlug,
+      });
     }
     return defaultOrganization;
   }

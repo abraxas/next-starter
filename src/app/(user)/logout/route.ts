@@ -1,4 +1,4 @@
-import { logout } from "@/app/lib/auth";
+import { logout } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { revalidatePath, revalidateTag } from "next/cache";
 

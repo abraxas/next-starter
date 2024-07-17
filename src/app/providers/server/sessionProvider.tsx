@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext } from "react";
-import { validateRequest } from "@/app/lib/auth";
+import { validateRequest } from "@/lib/auth";
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 type ContextType = Awaited<ReturnType<typeof validateRequest>> & {
   sessionCookieName: string | undefined;
@@ -20,14 +20,13 @@ export const SessionProvider = ({
   children,
   value,
 }: React.PropsWithChildren<{ value: ContextType }>) => {
-  const { data: sessionData, isLoading } = useQuery(
-    ["session"],
-    async () => {
+  const { data: sessionData, isLoading } = useQuery({
+    queryKey: ["session"],
+    queryFn: async () => {
       const { data } = await axios.get("/auth/session");
       return data;
     },
-    {},
-  );
+  });
 
   const providedData = isLoading ? value : sessionData;
 

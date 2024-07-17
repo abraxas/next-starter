@@ -20,7 +20,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { useSession } from "@/app/providers/server/sessionProvider";
 import Link from "next/link";
 import { logoutAction } from "@/app/(web)/components/actions";
-import { useQueryClient } from "react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
 interface Props {

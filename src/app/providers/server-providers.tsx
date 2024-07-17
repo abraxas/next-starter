@@ -1,4 +1,4 @@
-import { validateRequest } from "@/app/lib/auth";
+import { validateRequest } from "@/lib/auth";
 import { SessionProvider } from "@/app/providers/server/sessionProvider";
 import { revalidateTag, unstable_cache } from "next/cache";
 

@@ -1,15 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 import { injectable } from "inversify";
 
+const prismaClient = new PrismaClient();
+
 @injectable()
 export class PrismaService {
-  private readonly _prisma: PrismaClient;
-
-  constructor() {
-    this._prisma = new PrismaClient();
-  }
+  constructor() {}
 
   get client(): PrismaClient {
-    return this._prisma;
+    return prismaClient;
   }
 }

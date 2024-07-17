@@ -21,14 +21,15 @@ model Account {
 }
 
 model Organization {
-  id        String   @id
-  name      String?  @unique(map: "organization_name_key")
+  id        String   @id @default(uuid())
+  slug      String   @unique(map: "organization_name_key")
+  name      String?
   createdAt DateTime @default(now())
   updatedAt DateTime
 }
 
 model Session {
-  id              String   @id
+  id              String   @id @default(uuid())
   accountId       String?
   userId          String
   expiresAt       DateTime @db.Timestamp(6)
@@ -44,7 +45,7 @@ enum PasswordAlgorithm {
 }
 
 model User {
-  id                String             @id
+  id                String             @id @default(uuid())
   name              String?
   email             String?
   hashedPassword    String?
@@ -57,4 +58,14 @@ model User {
   username          String?
   accounts          Account[]
   sessions          Session[]
+  adminUser         AdminUser?
+}
+
+model AdminUser {
+  id     String @id @default(uuid())
+  userId String @unique
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime
 }
