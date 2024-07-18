@@ -27,8 +27,11 @@ type InitialData = {
 };
 
 type FormProps = {
-  initialData: InitialData;
+  initialData?: InitialData;
   id?: string;
+  readonly?: boolean;
+  onCancel?: () => void;
+  onSuccess?: () => void;
 };
 
 const initialState = {
@@ -37,7 +40,13 @@ const initialState = {
   redirect: false,
 };
 
-export default function Form({ initialData, id }: FormProps) {
+export default function OrganizationForm({
+  initialData,
+  id,
+  readonly,
+  onCancel,
+  onSuccess,
+}: FormProps) {
   const handleSubmit = id
     ? updateOrganization.bind(null, id)
     : createOrganization;
@@ -47,10 +56,14 @@ export default function Form({ initialData, id }: FormProps) {
   );
 
   useEffect(() => {
-    if (state?.redirect) {
-      redirect("/admin/organizations");
+    if (state?.success) {
+      if (onCancel) {
+        onCancel();
+      } else {
+        redirect("/admin/organizations");
+      }
     }
-  }, [state?.redirect]);
+  }, [state?.success]);
 
   console.dir(state);
 
@@ -68,14 +81,24 @@ export default function Form({ initialData, id }: FormProps) {
               )}
               <FormControl isInvalid={!!state?.errors?.slug}>
                 <FormLabel>Slug</FormLabel>
-                <Input name="slug" defaultValue={initialData?.slug} />
+                <Input
+                  name="slug"
+                  defaultValue={initialData?.slug}
+                  readOnly={readonly}
+                  variant={readonly ? "none" : "outline"}
+                />
                 {state?.errors?.slug && (
                   <FormErrorMessage>{state?.errors?.slug}</FormErrorMessage>
                 )}
               </FormControl>
               <FormControl isInvalid={!!state?.errors?.name}>
                 <FormLabel>Name</FormLabel>
-                <Input name="name" defaultValue={initialData?.name} />
+                <Input
+                  name="name"
+                  defaultValue={initialData?.name}
+                  readOnly={readonly}
+                  variant={readonly ? "none" : "outline"}
+                />
                 {state?.errors?.name && (
                   <FormErrorMessage>{state?.errors?.name}</FormErrorMessage>
                 )}
@@ -84,12 +107,18 @@ export default function Form({ initialData, id }: FormProps) {
           </CardBody>
         </Card>
 
-        <Stack spacing={3} direction="row">
-          <Button type="submit">Save</Button>
-          <Link href="/admin/organizations">
-            <Button>Cancel</Button>
-          </Link>
-        </Stack>
+        {!readonly ? (
+          <Stack spacing={3} direction="row">
+            <Button type="submit">Save</Button>
+            {onCancel ? (
+              <Button onClick={onCancel}>Cancel</Button>
+            ) : (
+              <Link href="/admin/organizations">
+                <Button>Cancel</Button>
+              </Link>
+            )}
+          </Stack>
+        ) : null}
       </Stack>
     </form>
   );

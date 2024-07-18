@@ -1,9 +1,9 @@
 import "reflect-metadata";
 
-import { inject, injectable } from "inversify";
+import { injectable } from "inversify";
 import { UserService } from "@services/server/users/UserService";
-import { produce } from "immer";
 import { lucia } from "@/lib/auth";
+import { omit } from "@/lib/util/objects";
 
 @injectable()
 export class UserController {
@@ -12,14 +12,16 @@ export class UserController {
   async getSession() {
     const session = await this.userService.getUserSession();
     const rawUser = await this.userService.getCurrentUser();
-    const user = produce(rawUser, (user: Record<string, unknown>) => {
-      if (!user) return;
-      const isAdmin = this.userService.isAdmin(user);
-      if (user.adminUser) {
-        delete user.adminUser;
-      }
-      user.isAdmin = isAdmin;
-    });
+
+    if (!rawUser) {
+      throw new Error("Invalid user session.");
+    }
+
+    const isAdmin = this.userService.isAdmin(rawUser);
+    const user = {
+      ...omit(rawUser, "adminUser" as keyof typeof rawUser),
+      isAdmin,
+    };
     const sessionCookieName = lucia.sessionCookieName;
     return Response.json({ ...session, user, sessionCookieName });
   }

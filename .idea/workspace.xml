@@ -4,20 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Admin page organization table stuff">
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Tests pass and build works">
+      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationView.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/new/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/util/hooks.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/util/objects.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/components/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/Form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/table/Table.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/users/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721134731256</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Tests pass and build works">
+      <option name="closed" value="true" />
+      <created>1721301406757</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721301406757</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +193,7 @@
     <MESSAGE value="The prisma-port is real.  It's just cleaner" />
     <MESSAGE value="Various service code in prep for test" />
     <MESSAGE value="Admin page organization table stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin page organization table stuff" />
+    <MESSAGE value="Tests pass and build works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests pass and build works" />
   </component>
 </project>

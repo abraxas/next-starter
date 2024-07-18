@@ -15,25 +15,13 @@ import {
   Center,
 } from "@chakra-ui/react";
 import OrganizationForm from "@/app/(web)/admin/organizations/components/OrganizationForm";
-import OrganizationView from "@/app/(web)/admin/organizations/components/OrganizationView";
 import { notFound } from "next/navigation";
 import { Organization } from "@prisma/client";
 
-export default async function OrganizationPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const organizationController = serverContainer.get(OrganizationController);
-  const organization: Organization | undefined =
-    await organizationController.getOrganizationById(params.id);
-
-  if (!organization || !params.id) {
-    return notFound();
-  }
+export default async function NewOrganizationPage() {
   return (
     <Box>
-      <OrganizationView organization={organization} id={params.id} />
+      <OrganizationForm />
     </Box>
   );
 }

@@ -12,27 +12,28 @@ export class OrganizationController {
     private userService: UserService,
   ) {}
 
-  async getOrganizations() {
+  async getOrganizations({ showArchived }: { showArchived?: boolean } = {}) {
     await this.userService.assertCurrentUserIsAdmin();
-
-    return this.organizationService.getOrganizations();
+    return this.organizationService.getOrganizations({ showArchived });
   }
 
   async getOrganizationById(id: string) {
     await this.userService.assertCurrentUserIsAdmin();
-
     return this.organizationService.getOrganizationById(id);
   }
 
   async updateOrganization(id: string, data: Prisma.OrganizationUpdateInput) {
     await this.userService.assertCurrentUserIsAdmin();
-
     return this.organizationService.updateOrganization(id, data);
   }
 
   async createOrganization(data: Prisma.OrganizationCreateInput) {
     await this.userService.assertCurrentUserIsAdmin();
-
     return this.organizationService.createOrganization(data);
+  }
+
+  async archiveOrganization(id: string) {
+    await this.userService.assertCurrentUserIsAdmin();
+    return this.organizationService.archiveOrganization(id);
   }
 }

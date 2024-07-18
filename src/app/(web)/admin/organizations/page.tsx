@@ -13,7 +13,7 @@ import { Prisma, Organization } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegEdit } from "react-icons/fa";
 import Link from "next/link";
-import { Heading } from "@chakra-ui/react";
+import { Button, Heading, Stack } from "@chakra-ui/react";
 import $OrganizationPayload = Prisma.$OrganizationPayload;
 import { undefined } from "zod";
 
@@ -70,7 +70,14 @@ export default function OrganizationPage() {
   return (
     <div>
       <Heading size="lg">Organizations</Heading>
-      <AppTable table={table} />
+      <Stack spacing={3}>
+        <AppTable table={table} />
+        <Stack spacing={3} direction="row">
+          <Link href={"/admin/organizations/new"}>
+            <Button colorScheme="blue">Add Organization</Button>
+          </Link>
+        </Stack>
+      </Stack>
     </div>
   );
 }

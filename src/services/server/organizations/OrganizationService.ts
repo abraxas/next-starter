@@ -13,23 +13,32 @@ export class OrganizationService {
     private prismaService: PrismaService,
   ) {}
 
-  async getOrganizations(): Promise<Organization[]> {
+  async getOrganizations({
+    showArchived = false,
+  }: {
+    showArchived?: boolean;
+  } = {}): Promise<Organization[]> {
     if (!this.isMultiTenant()) {
       return [await this.getDefaultOrganization()];
     }
-    const organizations =
-      await this.prismaService.client.organization.findMany();
+    const organizations = await this.prismaService.client.organization.findMany(
+      {
+        where: {
+          ...(showArchived ? {} : { archived: false }),
+        },
+      },
+    );
     if (!organizations.length) {
       return [await this.getDefaultOrganization()];
     }
     return organizations;
   }
 
-  async getOrganizationById(id: string) {
+  async getOrganizationById(id: string): Promise<Organization> {
     if (!this.isMultiTenant()) return this.getDefaultOrganization();
     return this.prismaService.client.organization.findUnique({
       where: { id },
-    });
+    }) as Promise<Organization>;
   }
   async getOrganizationBySlug(slug: string) {
     if (!this.isMultiTenant()) return this.getDefaultOrganization();
@@ -60,6 +69,13 @@ export class OrganizationService {
     return this.prismaService.client.organization.update({
       where: { id },
       data,
+    });
+  }
+
+  async archiveOrganization(id: string) {
+    return this.prismaService.client.organization.update({
+      where: { id },
+      data: { archived: true, updatedAt: new Date() },
     });
   }
 
