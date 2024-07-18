@@ -30,7 +30,7 @@ export default async function OrganizationPage({
 
   return (
     <Box>
-      <Form initialData={organization} id={params?.id} />
+      <Form initialData={organization as any} id={params?.id} />
     </Box>
   );
 }

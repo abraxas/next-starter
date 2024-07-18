@@ -66,6 +66,7 @@ export default Sidebar;
 interface NavItemProps extends FlexProps {
   icon: IconType;
   children: React.ReactNode;
+  href?: string;
 }
 const NavItem = ({ icon, children, href }: NavItemProps) => {
   return (

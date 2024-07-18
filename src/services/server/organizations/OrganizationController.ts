@@ -29,4 +29,10 @@ export class OrganizationController {
 
     return this.organizationService.updateOrganization(id, data);
   }
+
+  async createOrganization(data: Prisma.OrganizationCreateInput) {
+    await this.userService.assertCurrentUserIsAdmin();
+
+    return this.organizationService.createOrganization(data);
+  }
 }

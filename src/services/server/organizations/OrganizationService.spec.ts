@@ -44,6 +44,8 @@ describe("OrganizationService", () => {
     const org = await service.createOrganization({
       name,
       slug: "neworg",
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
     expect(org.name).toBe(name);
     expect(mockPrismaService.client.organization.create).toHaveBeenCalledWith({

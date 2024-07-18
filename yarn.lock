@@ -7958,7 +7958,7 @@ __metadata:
     prettier: "npm:^3.3.2"
     prisma: "npm:^5.16.1"
     react: "npm:^18"
-    react-dom: "npm:^18"
+    react-dom: "npm:^18.3.1"
     react-icons: "npm:^5.2.1"
     reflect-metadata: "npm:^0.2.2"
     ts-node: "npm:^10.9.2"
@@ -8737,7 +8737,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18":
+"react-dom@npm:^18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
   dependencies:

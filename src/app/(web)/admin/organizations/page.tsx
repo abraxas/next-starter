@@ -13,10 +13,17 @@ import { Prisma, Organization } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegEdit } from "react-icons/fa";
 import Link from "next/link";
+import { Heading } from "@chakra-ui/react";
+import $OrganizationPayload = Prisma.$OrganizationPayload;
+import { undefined } from "zod";
 
-const columnHelper = createColumnHelper<Prisma.$OrganizationPayload>();
+const columnHelper = createColumnHelper<Organization>();
 
 const columns = [
+  columnHelper.accessor("slug", {
+    id: "slug",
+    header: "Slug",
+  }),
   columnHelper.accessor("name", {
     id: "name",
     header: "Name",
@@ -24,7 +31,7 @@ const columns = [
   columnHelper.accessor("updatedAt", {
     id: "lastUpdated",
     header: "Last Updated",
-    cell: (info) =>
+    cell: (info: any) =>
       info.getValue() ? new Date(info.getValue()).toLocaleDateString() : "",
   }),
   columnHelper.display({
@@ -41,67 +48,28 @@ const columns = [
 ];
 
 export default function OrganizationPage() {
-  // const columns = React.useMemo(
-  //   () => [
-  //     {
-  //       Header: "Name",
-  //       columns: [
-  //         {
-  //           Header: "First Name",
-  //           accessor: "firstName",
-  //         },
-  //         {
-  //           Header: "Last Name",
-  //           accessor: "lastName",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       Header: "Info",
-  //       columns: [
-  //         {
-  //           Header: "Age",
-  //           accessor: "age",
-  //         },
-  //         {
-  //           Header: "Visits",
-  //           accessor: "visits",
-  //         },
-  //         {
-  //           Header: "Status",
-  //           accessor: "status",
-  //         },
-  //         {
-  //           Header: "Profile Progress",
-  //           accessor: "progress",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  //   [],
-  // );
-
-  const { data } = useQuery<Organization[]>({
+  const { data } = useQuery({
+    initialData: [],
     queryKey: "organizations",
     queryFn: async () => {
       const res = await fetch("/api/admin/organizations");
       return res.json();
     },
-  });
+  } as any);
 
   //{ getTableProps, getTableBodyProps, headerGroups, rows, prepareRow }
-  const table = useReactTable({
+  const table = useReactTable<Organization>({
     columns,
     data: data ?? [],
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(), //order doesn't matter anymore!
     // etc.
-  });
+  } as any);
 
   return (
     <div>
-      <h1>Test</h1>
+      <Heading size="lg">Organizations</Heading>
       <AppTable table={table} />
     </div>
   );

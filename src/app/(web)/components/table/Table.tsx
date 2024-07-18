@@ -16,14 +16,17 @@ import {
   TriangleDownIcon,
   TriangleUpIcon,
 } from "@chakra-ui/icons";
-import { flexRender, useReactTable } from "@tanstack/react-table";
-
-export type TableProps = ReturnType<typeof useReactTable>;
+import {
+  flexRender,
+  useReactTable,
+  Table as ReactTable,
+} from "@tanstack/react-table";
+import { Organization } from "@prisma/client";
 
 export default function AppTable({
   table,
 }: {
-  table: ReturnType<typeof useReactTable>;
+  table: ReactTable<Organization>;
 }) {
   if (!table) return <div />;
 

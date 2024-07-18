@@ -42,16 +42,16 @@ export class OrganizationService {
     return this.serverConfig.multiTenant;
   }
 
-  async createOrganization(data: {
-    slug: string;
-    name: string;
-  }): Promise<Organization> {
+  async createOrganization(
+    data: Prisma.OrganizationCreateInput,
+  ): Promise<Organization> {
+    const { createdAt, updatedAt, ...rest } = data;
     return this.prismaService.client.organization.create({
       data: {
         id: uuidv4(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        ...data,
+        createdAt: createdAt || new Date(),
+        updatedAt: updatedAt || new Date(),
+        ...rest,
       },
     });
   }
@@ -74,6 +74,8 @@ export class OrganizationService {
       return this.createOrganization({
         name: defaultOrganizationSlug,
         slug: defaultOrganizationSlug,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       });
     }
     return defaultOrganization;
