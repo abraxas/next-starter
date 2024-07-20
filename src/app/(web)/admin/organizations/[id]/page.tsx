@@ -1,36 +1,26 @@
-import { serverContainer } from "@services/serverContainer";
-import { OrganizationController } from "@services/server/organizations/OrganizationController";
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Stack,
-  FormControl,
-  FormLabel,
-  Input,
-  Box,
-  Flex,
-  Center,
-} from "@chakra-ui/react";
-import OrganizationForm from "@/app/(web)/admin/organizations/components/OrganizationForm";
+"use client";
+import { Box } from "@chakra-ui/react";
 import OrganizationView from "@/app/(web)/admin/organizations/components/OrganizationView";
-import { notFound } from "next/navigation";
-import { Organization } from "@prisma/client";
+import { useAction } from "next-safe-action/hooks";
+import { getOrganizationAction } from "@/app/(web)/admin/organizations/actions";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default async function OrganizationPage({
+export default function OrganizationPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const organizationController = serverContainer.get(OrganizationController);
-  const organization: Organization | undefined =
-    await organizationController.getOrganizationById(params.id);
+  const router = useRouter();
+  const { execute: getOrganization, result } = useAction(getOrganizationAction);
+  useEffect(() => getOrganization({ id: params.id }), []);
+  const organization = result?.data?.organization;
+  console.log({ organization, params, result });
 
-  if (!organization || !params.id) {
-    return notFound();
-  }
+  //if notfound, give us a 404
+  if (result?.data?.notFound) return <div>Not Found</div>;
+  if (!organization) return <div />;
+
   return (
     <Box>
       <OrganizationView organization={organization} id={params.id} />

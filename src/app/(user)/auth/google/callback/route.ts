@@ -60,10 +60,9 @@ export async function GET(request: Request): Promise<Response> {
         },
       });
     }
-    console.log(3);
+
     //create user and account
     const userId = generateIdFromEntropySize(10); // 16 characters long
-    console.log(4);
     const addedUser = await db.user.create({
       data: {
         id: userId,
@@ -72,7 +71,6 @@ export async function GET(request: Request): Promise<Response> {
         updatedAt: new Date(),
       },
     });
-    console.log(5);
 
     const addedAccount = await db.account.create({
       data: {
@@ -83,7 +81,6 @@ export async function GET(request: Request): Promise<Response> {
       },
     });
 
-    console.log(6);
     const session = await lucia.createSession(addedUser.id.toString(), {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
@@ -98,8 +95,6 @@ export async function GET(request: Request): Promise<Response> {
       },
     });
   } catch (e) {
-    console.log("NOOOOOO");
-    console.dir(e);
     // the specific error message depends on the provider
     if (e instanceof OAuth2RequestError) {
       // invalid code

@@ -5,11 +5,13 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "declaration": false,
+    "declarationMap": false ,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -23,7 +25,7 @@
       "@/*": ["./src/*"],
       "@services/*": ["./src/services/*"],
     },
-    "types": ["reflect-metadata", "jest"]
+    "types": ["reflect-metadata", "jest"],
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

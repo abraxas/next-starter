@@ -4,10 +4,16 @@ import { injectable } from "inversify";
 import { PrismaService } from "@services/server/prisma";
 import { validateRequest } from "@/lib/auth";
 import { Prisma } from "@prisma/client";
+import ServerConfig from "@services/server/config/ServerConfig";
+import { OrganizationService } from "@services/server/organizations/OrganizationService";
 
 @injectable()
 export class UserService {
-  constructor(private prismaService: PrismaService) {}
+  constructor(
+    private prismaService: PrismaService,
+    private serverConfig: ServerConfig,
+    private organizationService: OrganizationService,
+  ) {}
 
   async getUserSession() {
     return validateRequest();
@@ -46,6 +52,11 @@ export class UserService {
   async getCurrentUser(includeSensitive?: boolean) {
     const session = await this.getUserSession();
     if (!session?.user?.id) return undefined;
+
+    if (this.serverConfig.automaticallyCreatePersonalOrganization) {
+      await this.organizationService.getPersonalOrganization(session.user.id);
+    }
+
     return this.getUserById(session.user.id, includeSensitive);
   }
 

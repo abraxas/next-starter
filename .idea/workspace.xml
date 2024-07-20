@@ -4,20 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Tests pass and build works">
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationView.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/new/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/util/hooks.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/util/objects.ts" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="About time with next-safe-actions.. OUCH">
+      <change afterPath="$PROJECT_DIR$/scripts/deletedArchivedData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/safe-action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/promoteUserToAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/promoteUserToAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/Form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationView.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/users/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +57,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "javascript.nodejs.core.library.configured.version": "21.7.1",
     "javascript.nodejs.core.library.typings.version": "20.14.10",
     "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest",
     "nodejs_interpreter_path": "wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node",
@@ -65,8 +73,8 @@
     "npm.db:studio.executor": "Run",
     "npm.dev.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\typescript\\lib",
+    "settings.editor.selected.configurable": "settings.typescriptcompiler",
+    "ts.external.directory.path": "C:\\Users\\cjaym\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -87,7 +95,7 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\lib\lucia.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.All Tests">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -158,6 +166,7 @@
       <workItem from="1719578075556" duration="8149000" />
       <workItem from="1719708361377" duration="4371000" />
       <workItem from="1721082601667" duration="39430000" />
+      <workItem from="1721414683315" duration="18891000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />
@@ -188,12 +197,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="includedJSSourcePackages">
+      <set>
+        <option value="next-safe-action" />
+      </set>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="The prisma-port is real.  It's just cleaner" />
     <MESSAGE value="Various service code in prep for test" />
     <MESSAGE value="Admin page organization table stuff" />
     <MESSAGE value="Tests pass and build works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tests pass and build works" />
+    <MESSAGE value="About time with next-safe-actions.. OUCH" />
+    <option name="LAST_COMMIT_MESSAGE" value="About time with next-safe-actions.. OUCH" />
   </component>
 </project>

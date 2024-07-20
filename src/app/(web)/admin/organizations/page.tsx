@@ -50,7 +50,7 @@ const columns = [
 export default function OrganizationPage() {
   const { data } = useQuery({
     initialData: [],
-    queryKey: "organizations",
+    queryKey: ["organizations"],
     queryFn: async () => {
       const res = await fetch("/api/admin/organizations");
       return res.json();

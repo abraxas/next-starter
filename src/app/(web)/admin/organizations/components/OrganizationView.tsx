@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OrganizationForm from "@/app/(web)/admin/organizations/components/OrganizationForm";
 import { Organization } from "@prisma/client";
-import { Box, Button, Stack } from "@chakra-ui/react";
+import { Button, Stack } from "@chakra-ui/react";
 import { useToggle } from "@/lib/util/hooks";
 import Link from "next/link";
+import { archiveOrganization } from "@/app/(web)/admin/organizations/actions";
+import { useRouter } from "next/navigation";
+import { z } from "zod";
 
 export default function OrganizationView({
   organization,
@@ -19,6 +22,7 @@ export default function OrganizationView({
     disable: onEditClicked,
     enable: enableReadonly,
   } = useToggle(true);
+  const router = useRouter();
 
   return (
     <Stack spacing={3}>
@@ -33,7 +37,18 @@ export default function OrganizationView({
       {readonly && (
         <Stack spacing={3} direction="row">
           <Button onClick={onEditClicked}>Edit</Button>
-          <Button colorScheme="red">Archive</Button>
+          <Button
+            onClick={async () => {
+              const result = await archiveOrganization({ id });
+
+              if (result?.data?.success) {
+                router.push("/admin/organizations");
+              }
+            }}
+            colorScheme="red"
+          >
+            Archive
+          </Button>
           <Link href={"/admin/organizations"}>
             <Button>Back</Button>
           </Link>

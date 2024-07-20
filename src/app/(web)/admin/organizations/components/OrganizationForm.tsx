@@ -17,9 +17,10 @@ import {
 } from "@chakra-ui/react";
 import { Organization } from "@prisma/client";
 import Link from "next/link";
-import { updateOrganization, createOrganization } from "../actions";
-import { redirect } from "next/navigation";
-import { useEffect, useState } from "react";
+import { createOrganizationAction, updateOrganizationAction } from "../actions";
+import { useAction } from "next-safe-action/hooks";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type InitialData = {
   slug: string;
@@ -34,8 +35,14 @@ type FormProps = {
   onSuccess?: () => void;
 };
 
+type ActionStateType = {
+  errors?: Record<string, string>;
+  errorMsg?: string;
+  redirect?: boolean;
+};
+
 const initialState = {
-  errors: {},
+  errors: {} as Record<string, string>,
   errorMsg: "",
   redirect: false,
 };
@@ -47,28 +54,39 @@ export default function OrganizationForm({
   onCancel,
   onSuccess,
 }: FormProps) {
-  const handleSubmit = id
-    ? updateOrganization.bind(null, id)
-    : createOrganization;
-  const [state, formAction] = useFormState(
-    handleSubmit as any,
-    initialState as any,
-  );
+  const router = useRouter();
+  const isEdit = !!id;
 
-  useEffect(() => {
-    if (state?.success) {
-      if (onCancel) {
-        onCancel();
+  const [state, setState] = useState<ActionStateType | undefined>(initialState);
+  async function onSubmit(formData: FormData) {
+    const handler = isEdit
+      ? updateOrganizationAction.bind(null, id)
+      : createOrganizationAction;
+    const data = {
+      slug: formData.get("slug")?.toString(),
+      name: formData.get("name")?.toString(),
+    };
+
+    console.dir({ data });
+
+    const result = await handler(data);
+    console.log("RES");
+    console.log({ result });
+    if (result?.data?.success) {
+      if (onSuccess) {
+        onSuccess();
+        return;
       } else {
-        redirect("/admin/organizations");
+        router.push("/admin/organizations");
       }
     }
-  }, [state?.success]);
+    setState(result?.data);
+  }
 
-  console.dir(state);
+  //const { execute, result: state } = useAction(onSubmit);
 
   return (
-    <form action={formAction as any}>
+    <form action={onSubmit}>
       <Stack spacing={3}>
         <Card flex={1} maxW={"lg"}>
           <CardBody>
@@ -84,8 +102,8 @@ export default function OrganizationForm({
                 <Input
                   name="slug"
                   defaultValue={initialData?.slug}
-                  readOnly={readonly}
-                  variant={readonly ? "none" : "outline"}
+                  readOnly={readonly || isEdit}
+                  variant={readonly || isEdit ? "none" : "outline"}
                 />
                 {state?.errors?.slug && (
                   <FormErrorMessage>{state?.errors?.slug}</FormErrorMessage>

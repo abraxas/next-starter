@@ -14,6 +14,11 @@ const ConfigSchema = z.object({
     .optional()
     .transform((value) => value === "true"),
   NEXT_PUBLIC_DEFAULT_ORGANIZATION: z.string().optional(),
+  NEXT_PUBLIC_PERSONAL_ORGANIZATION_NAME: z.string().optional(),
+  NEXT_PUBLIC_PERSONAL_ORGANIZATION_AUTOMATIC: z
+    .string()
+    .optional()
+    .transform((value) => value === "true"),
 });
 
 @injectable()
@@ -22,6 +27,8 @@ export default class ClientConfig {
   authAutoRedirect?: string;
   multiTenant?: boolean;
   defaultOrganizationSlug?: string;
+  personalOrganizationName?: string;
+  automaticallyCreatePersonalOrganization?: boolean;
 
   public constructor() {
     const config = ConfigSchema.parse(process.env);
@@ -29,5 +36,9 @@ export default class ClientConfig {
     this.authAutoRedirect = config.NEXT_PUBLIC_AUTH_AUTO_REDIRECT;
     this.multiTenant = config.NEXT_PUBLIC_MULTITENANT;
     this.defaultOrganizationSlug = config.NEXT_PUBLIC_DEFAULT_ORGANIZATION;
+    this.personalOrganizationName =
+      config.NEXT_PUBLIC_PERSONAL_ORGANIZATION_NAME;
+    this.automaticallyCreatePersonalOrganization =
+      config.NEXT_PUBLIC_PERSONAL_ORGANIZATION_AUTOMATIC;
   }
 }

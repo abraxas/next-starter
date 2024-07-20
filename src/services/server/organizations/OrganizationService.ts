@@ -96,4 +96,23 @@ export class OrganizationService {
     }
     return defaultOrganization;
   }
+
+  async getPersonalOrganization(userId: string) {
+    const personalOrganizationName =
+      this.serverConfig.personalOrganizationName ?? "Personal";
+    const personalOrganizationSlug = userId;
+    const personalOrganization =
+      await this.prismaService.client.organization.findUnique({
+        where: { slug: personalOrganizationSlug },
+      });
+    if (!personalOrganization) {
+      return this.createOrganization({
+        name: personalOrganizationName,
+        slug: personalOrganizationSlug,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
+    return personalOrganization;
+  }
 }

@@ -1,5 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
-const inquirer = require("inquirer");
+const inquirer = require("inquirer").default;
 const process = require("process");
 const dotenv = require("dotenv");
 const path = require("path");
