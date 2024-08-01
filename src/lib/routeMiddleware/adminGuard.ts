@@ -1,8 +1,8 @@
 import { serverContainer } from "@services/serverContainer";
 import { UserService } from "@services/server/users/UserService";
-import { GuardError } from "@/lib/util/fluentRouteBuilder";
 import { redirect } from "next/navigation";
 import { NextApiRequest, NextApiResponse } from "next";
+import { GuardError } from "@/lib/types/errors";
 
 export default async function adminGuard() {
   const userService = serverContainer.get(UserService);

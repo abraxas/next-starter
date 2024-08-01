@@ -1,7 +1,7 @@
-import { adminRouteBuilder } from "@/lib/routeBuilders/adminRouteBuilder";
+import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
-const AdminPage = adminRouteBuilder.route(async () => {
+function AdminPage() {
   return <div>Admin Page</div>;
-});
+}
 
-export default AdminPage;
+export default withAdminGuard(AdminPage);

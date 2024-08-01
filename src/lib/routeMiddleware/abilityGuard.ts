@@ -1,6 +1,6 @@
 import { UserService } from "@services/server/users/UserService";
 import { serverContainer } from "@services/serverContainer";
-import { GuardError } from "@/lib/util/fluentRouteBuilder";
+import { GuardError } from "@/lib/types/errors";
 
 export default function abilityGuard(task: string, module: any) {
   return async () => {

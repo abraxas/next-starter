@@ -3,29 +3,26 @@ import OrganizationView from "@/app/(web)/sysadmin/organizations/components/Orga
 import { redirect, useRouter } from "next/navigation";
 import { serverContainer } from "@services/serverContainer";
 import { OrganizationController } from "@services/server/organizations/OrganizationController";
-import { UserController } from "@services/server/users/UserController";
 import { UserService } from "@services/server/users/UserService";
-import { adminRouteBuilder } from "@/lib/routeBuilders/adminRouteBuilder";
+import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
-const OrganizationPage = adminRouteBuilder.route(
-  async ({ params }: { params: { id: string } }) => {
-    const userService = serverContainer.get(UserService);
-    await userService.redirectIfNotAdmin();
+async function OrganizationPage({ params }: { params: { id: string } }) {
+  const userService = serverContainer.get(UserService);
+  await userService.redirectIfNotAdmin();
 
-    const organizationController = serverContainer.get(OrganizationController);
-    const organization = await organizationController.getOrganizationById(
-      params.id,
-    );
+  const organizationController = serverContainer.get(OrganizationController);
+  const organization = await organizationController.getOrganizationById(
+    params.id,
+  );
 
-    if (!organization) {
-      redirect("/sysadmin/organizations");
-    }
+  if (!organization) {
+    redirect("/sysadmin/organizations");
+  }
 
-    return (
-      <Box>
-        <OrganizationView organization={organization} id={params.id} />
-      </Box>
-    );
-  },
-);
-export default OrganizationPage;
+  return (
+    <Box>
+      <OrganizationView organization={organization} id={params.id} />
+    </Box>
+  );
+}
+export default withAdminGuard(OrganizationPage);

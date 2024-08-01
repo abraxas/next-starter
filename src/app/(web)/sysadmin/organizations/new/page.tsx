@@ -1,26 +1,10 @@
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationController } from "@services/server/organizations/OrganizationController";
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Stack,
-  FormControl,
-  FormLabel,
-  Input,
-  Box,
-  Flex,
-  Center,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import OrganizationForm from "@/app/(web)/sysadmin/organizations/components/OrganizationForm";
-import { notFound } from "next/navigation";
-import { Organization } from "@prisma/client";
 import { UserService } from "@services/server/users/UserService";
-import { adminRouteBuilder } from "@/lib/routeBuilders/adminRouteBuilder";
+import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
-const NewOrganizationPage = adminRouteBuilder.route(async () => {
+async function NewOrganizationPage() {
   const userService = serverContainer.get(UserService);
   await userService.redirectIfNotAdmin();
   return (
@@ -28,5 +12,5 @@ const NewOrganizationPage = adminRouteBuilder.route(async () => {
       <OrganizationForm />
     </Box>
   );
-});
-export default NewOrganizationPage;
+}
+export default withAdminGuard(NewOrganizationPage);

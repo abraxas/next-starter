@@ -4,64 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="I'm somewhere.  Preparing to swap api to next-connect and have to deroute the pages.  That was a bad idea anyway.">
-      <change afterPath="$PROJECT_DIR$/src/app/(api)/api/auth/[...nextauth]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav/NavContents.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/NavLink.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/NavOld.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/NavOrganizationDropdown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/NavResponsiveWrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/providers/client/SessionWrapper.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/providers/server/AppSessionProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/routeBuilders/adminRouteBuilder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/util/fluentRouteBuilder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/util/nextConnectRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Goodbye FluentRouteBuilder">
+      <change afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/types/errors.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/deletedArchivedData.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/deleteArchivedData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/promoteUserToAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/promoteUserToAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/logout/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/components/SysadminSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/[id]/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/components/OrganizationForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/components/OrganizationView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/components/OrganizationView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/components/OrganizationTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/admin/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server/sessionProvider.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/auth/client.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/OrganizationService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/prisma.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/prisma.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/UserController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/UserService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/UserService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/serverContainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeBuilders/adminRouteBuilder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/util/fluentRouteBuilder.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +49,7 @@
     "Jest.OrganizationService.should return default organization for single tenant.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "next-auth",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "javascript.nodejs.core.library.configured.version": "21.7.1",
     "javascript.nodejs.core.library.typings.version": "20.14.10",
@@ -209,7 +163,7 @@
       <workItem from="1719578075556" duration="8149000" />
       <workItem from="1719708361377" duration="4371000" />
       <workItem from="1721082601667" duration="39430000" />
-      <workItem from="1721414683315" duration="68418000" />
+      <workItem from="1721414683315" duration="69429000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />
@@ -262,7 +216,8 @@
     <MESSAGE value="About time with next-safe-actions.. OUCH" />
     <MESSAGE value="Yes we have no prisma.  We have no prisma today." />
     <MESSAGE value="I'm somewhere.  Preparing to swap api to next-connect and have to deroute the pages.  That was a bad idea anyway." />
-    <option name="LAST_COMMIT_MESSAGE" value="I'm somewhere.  Preparing to swap api to next-connect and have to deroute the pages.  That was a bad idea anyway." />
+    <MESSAGE value="Goodbye FluentRouteBuilder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Goodbye FluentRouteBuilder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
