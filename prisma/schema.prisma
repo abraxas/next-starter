@@ -8,61 +8,76 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Account {
-  userId            String
-  providerAccountId String
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-  expires_at        Int?
-  provider          String
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "account_userId_users_id_fk")
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
 
-  @@id([providerAccountId, provider])
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  adminUser        AdminUser?
+  OrganizationUser OrganizationUser[]
 }
 
-model Organization {
-  id        String   @id @default(uuid())
-  slug      String   @unique(map: "organization_name_key")
-  name      String?
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
   createdAt DateTime @default(now())
-  updatedAt DateTime
-  archived  Boolean  @default(false)
-  user      User[]
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
 }
 
 model Session {
-  id              String   @id @default(uuid())
-  accountId       String?
-  userId          String
-  expiresAt       DateTime @db.Timestamp(6)
-  organization_id String?
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-enum PasswordAlgorithm {
-  PLAINTEXT
-  BCRYPT
-  ARGON2
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
 }
 
-model User {
-  id                String             @id @default(uuid())
-  name              String?
-  email             String?
-  hashedPassword    String?
-  passwordAlgorithm PasswordAlgorithm?
-  emailVerified     DateTime?
-  image             String?
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime
-  organizationId    String?
-  username          String?
-  accounts          Account[]
-  sessions          Session[]
-  adminUser         AdminUser?
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
 
-  organization Organization? @relation(fields: [organizationId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
 }
 
 model AdminUser {
@@ -72,4 +87,34 @@ model AdminUser {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime
+}
+
+model OrganizationUser {
+  id             String   @id @default(uuid())
+  userId         String
+  organizationId String
+  role           String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  // Overridables in case a client wants a user in multiple tenants to have different information
+  name          String?
+  email         String?
+  emailVerified DateTime?
+  image         String?
+
+  @@unique([userId, organizationId])
+}
+
+model Organization {
+  id                String             @id @default(uuid())
+  slug              String             @unique(map: "organization_name_key")
+  name              String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime
+  archived          Boolean            @default(false)
+  organizationUsers OrganizationUser[]
 }

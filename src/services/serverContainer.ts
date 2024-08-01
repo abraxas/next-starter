@@ -10,6 +10,9 @@ import { OrganizationService } from "@services/server/organizations/Organization
 import { UserService } from "@services/server/users/UserService";
 import { UserController } from "@services/server/users/UserController";
 import { OrganizationController } from "@services/server/organizations/OrganizationController";
+import { cookies } from "next/headers";
+import { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 
 export const serverContainer = Container.merge(
   clientContainer,
@@ -22,5 +25,7 @@ serverContainer.bind(OrganizationService).toSelf();
 serverContainer.bind(OrganizationController).toSelf();
 serverContainer.bind(UserService).toSelf();
 serverContainer.bind(UserController).toSelf();
+
+serverContainer.bind(TYPES.Cookies).toDynamicValue(() => cookies());
 
 //export { serverContainer };

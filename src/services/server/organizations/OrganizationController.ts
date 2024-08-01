@@ -13,8 +13,9 @@ export class OrganizationController {
   ) {}
 
   async getOrganizations({ showArchived }: { showArchived?: boolean } = {}) {
-    await this.userService.assertCurrentUserIsAdmin();
-    return this.organizationService.getOrganizations({ showArchived });
+    const ability = await this.userService.getCurrentUserAbility();
+    await this.userService.assertCurrentUserIsAdmin(ability);
+    return this.organizationService.getOrganizations({ showArchived, ability });
   }
 
   async getOrganizationById(id: string) {

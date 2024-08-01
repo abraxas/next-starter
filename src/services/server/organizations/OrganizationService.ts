@@ -1,30 +1,44 @@
 import "reflect-metadata";
 
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import ServerConfig from "@services/server/config/ServerConfig";
 import { PrismaService } from "@services/server/prisma";
 import { Prisma, Organization } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
+import { cookies } from "next/headers";
+import { TYPES } from "@services/types";
+import { type ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { PureAbility } from "@casl/ability";
+import { accessibleBy, PrismaQuery } from "@casl/prisma";
 
 @injectable()
 export class OrganizationService {
   constructor(
     private serverConfig: ServerConfig,
     private prismaService: PrismaService,
+    @inject(TYPES.Cookies) private cookies: ReadonlyRequestCookies,
   ) {}
 
   async getOrganizations({
     showArchived = false,
+    ability,
   }: {
     showArchived?: boolean;
+    ability?: PureAbility<any, PrismaQuery>;
   } = {}): Promise<Organization[]> {
     if (!this.isMultiTenant()) {
       return [await this.getDefaultOrganization()];
     }
+
+    const abilityFilters = [];
+    if (ability) {
+      abilityFilters.push(accessibleBy(ability).Organization);
+    }
+
     const organizations = await this.prismaService.client.organization.findMany(
       {
         where: {
-          ...(showArchived ? {} : { archived: false }),
+          AND: [...abilityFilters, showArchived ? {} : { archived: false }],
         },
       },
     );
@@ -114,5 +128,15 @@ export class OrganizationService {
       });
     }
     return personalOrganization;
+  }
+
+  async getCurrentOrganization() {
+    const organizationId = this.cookies.get("organizationId");
+    if (!organizationId?.value) return undefined;
+    return this.getOrganizationById(organizationId.value);
+  }
+
+  async setCurrentOrganization(organizationId: string) {
+    this.cookies.set("organizationId", organizationId);
   }
 }

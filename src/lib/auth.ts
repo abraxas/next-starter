@@ -1,94 +1,41 @@
-import { Lucia, Session, User } from "lucia";
-import { cookies } from "next/headers";
-import { cache } from "react";
-import { Google } from "arctic";
-import { serverContainer } from "@services/serverContainer";
+import GoogleProvider from "next-auth/providers/google";
 import { PrismaService } from "@services/server/prisma";
-import { TYPES } from "@services/types";
-import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import { User as UserModel } from "@prisma/client";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import NextAuth from "next-auth";
+import Nodemailer from "next-auth/providers/nodemailer";
 
 const prismaService = new PrismaService();
-const db = prismaService.client;
+export const authConfig = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+    }),
+    Nodemailer({
+      //server: `smtp://${process.env.EMAIL_USER}:${process.env.EMAIL_PASSWORD?.replaceAll(" ", "%20")}@${process.env.EMAIL_SERVER}:587`,
+      server: {
+        host: process.env.EMAIL_SERVER,
+        port: 587,
+        auth: {
+          type: "login",
+          user: process.env.EMAIL_USER!,
+          pass: process.env.EMAIL_PASSWORD!,
+        },
+      },
+      from: process.env.EMAIL_FROM,
 
-const adapter = new PrismaAdapter(db.session, db.user);
-
-export const lucia = new Lucia(adapter, {
-  sessionCookie: {
-    attributes: {
-      secure: process.env.NODE_ENV === "production",
-    },
-  },
-  getUserAttributes: (attributes) => {
-    return {
-      email: attributes.email,
-      image: attributes.image,
-      //fnord: attributes,
-    };
-  },
-});
-
-export const google = new Google(
-  process.env.GOOGLE_CLIENT_ID!,
-  process.env.GOOGLE_CLIENT_SECRET!,
-  process.env.GOOGLE_REDIRECT_URI!,
-);
-
-// export const googleAuth = google(lucia, {
-//     clientId: process.env.GOOGLE_CLIENT_ID!,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-//     redirectUri: process.env.GOOGLE_REDIRECT_URI!,
-// });
-
-export const validateRequest = cache(
-  async (): Promise<
-    { user: User; session: Session } | { user: null; session: null }
-  > => {
-    const sessionId = cookies().get(lucia.sessionCookieName)?.value ?? null;
-    if (!sessionId) {
-      return {
-        user: null,
-        session: null,
-      };
-    }
-
-    let result: any;
-    try {
-      result = await lucia.validateSession(sessionId);
-    } catch (e) {
-      throw e;
-    }
-    // next.js throws when you attempt to set cookie when rendering page
-    try {
-      if (result.session && result.session.fresh) {
-        const sessionCookie = lucia.createSessionCookie(result.session.id);
-        cookies().set(
-          sessionCookie.name,
-          sessionCookie.value,
-          sessionCookie.attributes,
-        );
-      }
-      if (!result.session) {
-        const sessionCookie = lucia.createBlankSessionCookie();
-        cookies().set(
-          sessionCookie.name,
-          sessionCookie.value,
-          sessionCookie.attributes,
-        );
-      }
-    } catch {}
-    return result;
-  },
-);
-
-export const logout = async () => {
-  lucia.invalidateSession(cookies().get(lucia.sessionCookieName)?.value!);
-  cookies().delete(lucia.sessionCookieName);
+      //user: process.env.EMAIL_SERVER_USER,
+      //password: process.env.EMAIL_SERVER_PASSWORD,
+    }),
+  ],
+  adapter: PrismaAdapter(prismaService.client),
 };
 
-declare module "lucia" {
-  interface Register {
-    Lucia: typeof lucia;
-    DatabaseUserAttributes: Omit<UserModel, "id">;
-  }
-}
+export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);

@@ -2,10 +2,13 @@ import "reflect-metadata";
 
 import { injectable } from "inversify";
 import { PrismaService } from "@services/server/prisma";
-import { validateRequest } from "@/lib/auth";
-import { Prisma } from "@prisma/client";
+import { Prisma, User, Organization } from "@prisma/client";
 import ServerConfig from "@services/server/config/ServerConfig";
 import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { AbilityBuilder, defineAbility, PureAbility } from "@casl/ability";
+import { createPrismaAbility, PrismaAbility } from "@casl/prisma";
 
 @injectable()
 export class UserService {
@@ -15,42 +18,19 @@ export class UserService {
     private organizationService: OrganizationService,
   ) {}
 
-  async getUserSession() {
-    return validateRequest();
-  }
-
-  static getSelectFields(includeSensitive?: boolean): Prisma.UserSelect {
-    return {
-      id: true,
-      email: true,
-      emailVerified: true,
-      username: true,
-      image: true,
-      name: true,
-      createdAt: true,
-      updatedAt: true,
-      organizationId: true,
-      ...(includeSensitive
-        ? {
-            hashedPassword: true,
-            passwordAlgorithm: true,
-          }
-        : {}),
-      adminUser: true,
-    };
-  }
-
   async getUserById(id: string, includeSensitive?: boolean) {
     return this.prismaService.client.user.findUnique({
       where: {
         id,
       },
-      select: UserService.getSelectFields(includeSensitive),
+      include: {
+        adminUser: true,
+      },
     });
   }
 
   async getCurrentUser(includeSensitive?: boolean) {
-    const session = await this.getUserSession();
+    const session = await auth();
     if (!session?.user?.id) return undefined;
 
     if (this.serverConfig.automaticallyCreatePersonalOrganization) {
@@ -64,10 +44,40 @@ export class UserService {
     return !!user.adminUser;
   }
 
-  async assertCurrentUserIsAdmin() {
-    const user = await this.getCurrentUser();
-    if (!user || !this.isAdmin(user)) {
-      throw new Error("User is not an admin");
+  async assertCurrentUserIsAdmin(ability?: PureAbility) {
+    let userAbility = ability;
+    if (!userAbility) {
+      userAbility = await this.getCurrentUserAbility();
     }
+    if (userAbility.cannot("all", "admin")) {
+      throw new Error("User is not an sysadmin");
+    }
+  }
+
+  async redirectIfNotAdmin() {
+    const user = await this.getCurrentUser();
+    const ability = await this.getAbility(user);
+
+    //if (!user || !this.isAdmin(user)) {
+    if (ability.cannot("all", "admin")) {
+      redirect("/");
+    }
+  }
+  async getAbility(user?: User | null) {
+    const { can, cannot, build } = new AbilityBuilder(createPrismaAbility);
+
+    if (user) {
+      if (this.isAdmin(user)) {
+        can(["manage", "read"], "admin");
+        can(["access", "read", "create", "update", "delete"], "Organization");
+      }
+    }
+
+    return build();
+  }
+
+  async getCurrentUserAbility() {
+    const user = await this.getCurrentUser();
+    return this.getAbility(user);
   }
 }

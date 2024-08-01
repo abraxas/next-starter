@@ -36,7 +36,8 @@ async function promoteUserToAdmin(email) {
       {
         type: "list",
         name: "userId",
-        message: "Multiple users found. Please select one to promote to admin:",
+        message:
+          "Multiple users found. Please select one to promote to sysadmin:",
         choices,
       },
     ]);
@@ -50,7 +51,7 @@ async function promoteUserToAdmin(email) {
   });
 
   if (existingAdmin) {
-    console.log("This user is already an admin.");
+    console.log("This user is already an sysadmin.");
     return;
   }
 
@@ -63,7 +64,7 @@ async function promoteUserToAdmin(email) {
     },
   });
 
-  console.log("User promoted to admin successfully.");
+  console.log("User promoted to sysadmin successfully.");
 }
 
 const email = process.argv[2];
