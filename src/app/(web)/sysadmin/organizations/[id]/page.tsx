@@ -2,8 +2,8 @@ import { Box } from "@chakra-ui/react";
 import OrganizationView from "@/app/(web)/sysadmin/organizations/components/OrganizationView";
 import { redirect, useRouter } from "next/navigation";
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationController } from "@services/server/organizations/Organization.Controller";
-import { UserService } from "@services/server/users/User.Service";
+import { OrganizationController } from "@services/server/organizations/Organization.controller";
+import { UserService } from "@services/server/users/User.service";
 import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
 async function OrganizationPage({ params }: { params: { id: string } }) {

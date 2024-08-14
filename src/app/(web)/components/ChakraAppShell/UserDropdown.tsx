@@ -16,8 +16,11 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { logout } from "@/app/(web)/components/Nav/actions";
 import { FiChevronDown } from "react-icons/fi";
+import React from "react";
+import Link from "next/link";
+import { logout } from "@/app/(web)/components/ChakraAppShell/actions";
+import { useRouter } from "next/navigation";
 
 export type UserDropdownProps = {
   user: User | null;
@@ -31,6 +34,13 @@ export default function UserDropdown({
   //currentOrganization,
   //handleOrganizationPickerChange,
 }: UserDropdownProps) {
+  const router = useRouter();
+
+  async function logoutClicked() {
+    await logout();
+    router.push("/");
+  }
+
   return (
     <Flex alignItems={"center"}>
       <Spacer w={5} />
@@ -62,7 +72,7 @@ export default function UserDropdown({
           <MenuItem>Settings</MenuItem>
           <MenuItem>Billing</MenuItem>
           <MenuDivider />
-          <MenuItem onClick={() => logout()}>Sign out</MenuItem>
+          <MenuItem onClick={logoutClicked}>Sign out</MenuItem>
         </MenuList>
       </Menu>
     </Flex>

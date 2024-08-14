@@ -1,11 +1,12 @@
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters", "fullTextSearch", "fullTextIndex"]
+  previewFeatures = ["driverAdapters", "fullTextSearch", "fullTextIndex", "multiSchema"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  schemas  = ["public"]
 }
 
 model User {
@@ -23,6 +24,8 @@ model User {
   updatedAt        DateTime           @updatedAt
   adminUser        AdminUser?
   OrganizationUser OrganizationUser[]
+
+  @@schema("public")
 }
 
 model Account {
@@ -44,16 +47,17 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
+  @@schema("public")
 }
 
 model Session {
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String   @id
+  userId    String
+  expiresAt DateTime
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@schema("public")
 }
 
 model VerificationToken {
@@ -62,6 +66,7 @@ model VerificationToken {
   expires    DateTime
 
   @@id([identifier, token])
+  @@schema("public")
 }
 
 // Optional for WebAuthn support
@@ -78,6 +83,7 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+  @@schema("public")
 }
 
 model AdminUser {
@@ -87,6 +93,8 @@ model AdminUser {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
   updatedAt DateTime
+
+  @@schema("public")
 }
 
 model OrganizationUser {
@@ -107,6 +115,7 @@ model OrganizationUser {
   image         String?
 
   @@unique([userId, organizationId])
+  @@schema("public")
 }
 
 model Organization {
@@ -117,4 +126,6 @@ model Organization {
   updatedAt         DateTime
   archived          Boolean            @default(false)
   organizationUsers OrganizationUser[]
+
+  @@schema("public")
 }

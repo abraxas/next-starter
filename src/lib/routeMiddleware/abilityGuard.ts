@@ -1,4 +1,4 @@
-import { UserService } from "@services/server/users/User.Service";
+import { UserService } from "@services/server/users/User.service";
 import { serverContainer } from "@services/serverContainer";
 import { GuardError } from "@/lib/types/errors";
 

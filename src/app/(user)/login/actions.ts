@@ -5,7 +5,7 @@ import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { serverContainer } from "@services/serverContainer";
-import { PrismaService } from "@services/server/prisma";
+import { PrismaService } from "@services/server/PrismaService";
 
 export async function login(
   foo: any,

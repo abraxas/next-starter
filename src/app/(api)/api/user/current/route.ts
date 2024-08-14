@@ -1,6 +1,6 @@
-import { UserService } from "@services/server/users/User.Service";
+import { UserService } from "@services/server/users/User.service";
 import { serverContainer } from "@services/serverContainer";
-import { UserController } from "@services/server/users/User.Controller";
+import { UserController } from "@services/server/users/User.controller";
 
 export async function GET() {
   const userService = serverContainer.get(UserService);

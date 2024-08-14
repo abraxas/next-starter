@@ -3,11 +3,11 @@ import { generateCodeVerifier, OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
 import { google, lucia } from "@/lib/auth";
 import { serverContainer } from "@services/serverContainer";
-import { PrismaService } from "@services/server/prisma";
+import { PrismaService } from "@services/server/PrismaService";
 import { TYPES } from "@services/types";
 
 export async function GET(request: Request): Promise<Response> {
-  const prismaService = serverContainer.get<PrismaService>(PrismaService);
+  const prismaService = serverContainer.get(PrismaService);
   const db = prismaService.client;
 
   const url = new URL(request.url);
@@ -78,6 +78,7 @@ export async function GET(request: Request): Promise<Response> {
         provider: "google",
         providerAccountId: googleUser.sub,
         updatedAt: new Date(),
+        type: "oauth",
       },
     });
 

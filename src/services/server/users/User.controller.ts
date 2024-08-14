@@ -8,6 +8,11 @@ import { omit } from "@/lib/util/objects";
 export class UserController {
   constructor(private userService: UserService) {}
 
+  async getSession() {
+    console.log("OI");
+    return this.userService.getUserSession();
+  }
+
   async getCurrentUser() {
     const user = await this.userService.getCurrentUser();
     return user;

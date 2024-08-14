@@ -38,7 +38,6 @@ import { IconType } from "react-icons";
 import UserDropdown, {
   UserDropdownProps,
 } from "@/app/(web)/components/ChakraAppShell/UserDropdown";
-import { login } from "@/app/(web)/components/Nav/actions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 interface NavItemProps extends FlexProps {
@@ -63,6 +62,8 @@ interface SidebarProps extends BoxProps {
   linkItems: Array<LinkItemProps>;
   onClose: () => void;
 }
+
+declare const window: any;
 
 const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
   const pathname = usePathname();
@@ -187,11 +188,11 @@ const MobileNav = ({ onOpen, userDropdownProps, ...rest }: MobileProps) => {
         {userDropdownProps.user ? (
           <UserDropdown {...userDropdownProps} />
         ) : (
-          <form action={login}>
+          <Link href="/login">
             <Button colorScheme={"green"} variant={"solid"} type="submit">
               Sign in
             </Button>
-          </form>
+          </Link>
         )}
       </HStack>
     </Flex>

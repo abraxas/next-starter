@@ -5,7 +5,7 @@ import { PrismaService } from "@services/server/PrismaService";
 import { Prisma, User, Organization } from "@prisma/client";
 import ServerConfig from "@services/server/config/ServerConfig";
 import { OrganizationService } from "@services/server/organizations/Organization.service";
-import { auth } from "@/lib/auth";
+import { validateRequest } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { AbilityBuilder, defineAbility, PureAbility } from "@casl/ability";
 import { createPrismaAbility, PrismaAbility } from "@casl/prisma";
@@ -17,6 +17,10 @@ export class UserService {
     private serverConfig: ServerConfig,
     private organizationService: OrganizationService,
   ) {}
+
+  async getUserSession() {
+    return validateRequest();
+  }
 
   async getUserById(id: string, includeSensitive?: boolean) {
     return this.prismaService.client.user.findUnique({
@@ -30,7 +34,7 @@ export class UserService {
   }
 
   async getCurrentUser(includeSensitive?: boolean) {
-    const session = await auth();
+    const session = await this.getUserSession();
     if (!session?.user?.id) return null;
 
     if (this.serverConfig.automaticallyCreatePersonalOrganization) {
@@ -50,7 +54,7 @@ export class UserService {
       userAbility = await this.getCurrentUserAbility();
     }
     if (userAbility.cannot("all", "admin")) {
-      throw new Error("User is not an sysadmin");
+      throw new Error("User is not a sysadmin");
     }
   }
 

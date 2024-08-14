@@ -1,7 +1,7 @@
 "use server";
 
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationController } from "@services/server/organizations/Organization.Controller";
+import { OrganizationController } from "@services/server/organizations/Organization.controller";
 import { Prisma } from "@prisma/client";
 import { notFound, redirect } from "next/navigation";
 import { Schema, z } from "zod";

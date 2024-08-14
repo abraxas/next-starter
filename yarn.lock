@@ -22,32 +22,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth/core@npm:0.32.0":
-  version: 0.32.0
-  resolution: "@auth/core@npm:0.32.0"
-  dependencies:
-    "@panva/hkdf": "npm:^1.1.1"
-    "@types/cookie": "npm:0.6.0"
-    cookie: "npm:0.6.0"
-    jose: "npm:^5.1.3"
-    oauth4webapi: "npm:^2.9.0"
-    preact: "npm:10.11.3"
-    preact-render-to-string: "npm:5.2.3"
-  peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
-    nodemailer: ^6.8.0
-  peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
-    nodemailer:
-      optional: true
-  checksum: 10c0/8e48d6938feca1ce4af76983cbe070684c1b10cf1f3f6799492376d4ef81559c2f841f46da07ed9e9f59d2356abe649937deeefa36fa5f94ff5c43ab5466963e
-  languageName: node
-  linkType: hard
-
 "@auth/core@npm:0.34.1":
   version: 0.34.1
   resolution: "@auth/core@npm:0.34.1"
@@ -2804,6 +2778,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lucia-auth/adapter-prisma@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@lucia-auth/adapter-prisma@npm:4.0.1"
+  peerDependencies:
+    "@prisma/client": ^4.2.0 || ^5.0.0
+    lucia: 3.x
+  checksum: 10c0/fc9778e129b9da84eceff7c052f5767231fd4a6bcc12f2fe2805fec6ac9dea4b0b4dcd42207e15cca9ffa49a83f7f39d2597eca2380503758b6d14af64ed4a98
+  languageName: node
+  linkType: hard
+
 "@motionone/animation@npm:^10.12.0":
   version: 10.18.0
   resolution: "@motionone/animation@npm:10.18.0"
@@ -2866,16 +2850,6 @@ __metadata:
     hey-listen: "npm:^1.0.8"
     tslib: "npm:^2.3.1"
   checksum: 10c0/db57dbb6a131fab36dc1eb4e1f3a4575ca97563221663adce54c138de1e1a9eaf4a4a51ddf99fdab0341112159e0190b35cdeddfdbd08ba3ad1e35886a5324bb
-  languageName: node
-  linkType: hard
-
-"@next-auth/prisma-adapter@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@next-auth/prisma-adapter@npm:1.0.7"
-  peerDependencies:
-    "@prisma/client": ">=2.26.0 || >=3"
-    next-auth: ^4
-  checksum: 10c0/ed69c7d1900bcb0081b8fb078e7bbe5a237c084ade78b79e97951e940b9e3110e85fc2887b01a17aecf2e4bc3364c97256f20873012669c9336613a5ee082526
   languageName: node
   linkType: hard
 
@@ -7906,6 +7880,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lucia@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "lucia@npm:3.2.0"
+  dependencies:
+    oslo: "npm:1.2.0"
+  checksum: 10c0/f4667785c59a365b0251b8f25eb55110aa0c2716bb05c6e01b072b476b6f0a29f5b9c48739a02eaba65dd0690accddec6ab0038fb47bdcd11773434195531c91
+  languageName: node
+  linkType: hard
+
 "lz-string@npm:^1.5.0":
   version: 1.5.0
   resolution: "lz-string@npm:1.5.0"
@@ -8210,28 +8193,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:^5.0.0-beta.19":
-  version: 5.0.0-beta.19
-  resolution: "next-auth@npm:5.0.0-beta.19"
-  dependencies:
-    "@auth/core": "npm:0.32.0"
-  peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
-    next: ^14 || ^15.0.0-0
-    nodemailer: ^6.6.5
-    react: ^18.2.0 || ^19.0.0-0
-  peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
-    nodemailer:
-      optional: true
-  checksum: 10c0/30804eae158b9e57cdeeeef81d4aee10aabff8c415403b34cab673eb5eeadfe2232d77d782a7b1ad862bb3dc60faacf51794a23e52679243d156531609b7875f
-  languageName: node
-  linkType: hard
-
 "next-client-cookies@npm:^1.1.1":
   version: 1.1.1
   resolution: "next-client-cookies@npm:1.1.1"
@@ -8268,7 +8229,7 @@ __metadata:
     "@chakra-ui/system": "npm:^2.6.2"
     "@emotion/react": "npm:^11.8.1"
     "@emotion/styled": "npm:^11"
-    "@next-auth/prisma-adapter": "npm:^1.0.7"
+    "@lucia-auth/adapter-prisma": "npm:^4.0.1"
     "@prisma/adapter-pg": "npm:^5.15.1"
     "@prisma/client": "npm:^5.16.1"
     "@tanstack/react-query": "npm:^5.51.3"
@@ -8297,8 +8258,8 @@ __metadata:
     inversify: "npm:^6.0.2"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    lucia: "npm:^3.2.0"
     next: "npm:14.2.4"
-    next-auth: "npm:^5.0.0-beta.19"
     next-client-cookies: "npm:^1.1.1"
     next-safe-action: "npm:^7.1.4-experimental.1"
     nodemailer: "npm:^6.9.14"
@@ -8450,7 +8411,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oauth4webapi@npm:^2.10.4, oauth4webapi@npm:^2.9.0":
+"oauth4webapi@npm:^2.10.4":
   version: 2.11.1
   resolution: "oauth4webapi@npm:2.11.1"
   checksum: 10c0/69446298b68ac18179a4e8c818e2ad5610e39271405b8af7df1288e8180d6b9ca4051bd7563d9be1e94aa558453290051fdc7a441ed91a3ac238028908660a79
