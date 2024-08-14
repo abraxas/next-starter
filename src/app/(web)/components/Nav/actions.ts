@@ -2,7 +2,7 @@
 import { signIn, signOut } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { OrganizationService } from "@services/server/organizations/Organization.service";
 
 export async function logout() {
   "use server";

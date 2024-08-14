@@ -3,7 +3,7 @@
 
 import { redirect } from "next/navigation";
 import { serverContainer } from "@services/serverContainer";
-import { UserService } from "@services/server/users/UserService";
+import { UserService } from "@services/server/users/User.Service";
 import React from "react";
 
 export default function withAdminGuard(Element: React.JSX.ElementType) {

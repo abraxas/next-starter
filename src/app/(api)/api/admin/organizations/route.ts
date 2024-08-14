@@ -1,4 +1,4 @@
-import { OrganizationController } from "@services/server/organizations/OrganizationController";
+import { OrganizationController } from "@services/server/organizations/Organization.Controller";
 import { serverContainer } from "@services/serverContainer";
 
 export async function GET() {

@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { NavContents } from "@/app/(web)/components/Nav/NavContents";
 import { auth, signIn, signOut } from "@/lib/auth";
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { OrganizationService } from "@services/server/organizations/Organization.service";
 import { revalidatePath } from "next/cache";
 
 export default async function Nav() {

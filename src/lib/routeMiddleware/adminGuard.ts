@@ -1,5 +1,5 @@
 import { serverContainer } from "@services/serverContainer";
-import { UserService } from "@services/server/users/UserService";
+import { UserService } from "@services/server/users/User.Service";
 import { redirect } from "next/navigation";
 import { NextApiRequest, NextApiResponse } from "next";
 import { GuardError } from "@/lib/types/errors";

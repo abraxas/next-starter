@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
 import { Container } from "inversify";
-import { OrganizationService } from "./OrganizationService";
-import { PrismaService } from "@services/server/prisma";
+import { OrganizationService } from "./Organization.service";
+import { PrismaService } from "@services/server/PrismaService";
 import ServerConfig from "@services/server/config/ServerConfig";
 
 // Mock implementations

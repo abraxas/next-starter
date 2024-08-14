@@ -1,10 +1,10 @@
 import "reflect-metadata";
 
 import { injectable } from "inversify";
-import { PrismaService } from "@services/server/prisma";
+import { PrismaService } from "@services/server/PrismaService";
 import { Prisma, User, Organization } from "@prisma/client";
 import ServerConfig from "@services/server/config/ServerConfig";
-import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { OrganizationService } from "@services/server/organizations/Organization.service";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { AbilityBuilder, defineAbility, PureAbility } from "@casl/ability";
@@ -31,7 +31,7 @@ export class UserService {
 
   async getCurrentUser(includeSensitive?: boolean) {
     const session = await auth();
-    if (!session?.user?.id) return undefined;
+    if (!session?.user?.id) return null;
 
     if (this.serverConfig.automaticallyCreatePersonalOrganization) {
       await this.organizationService.getPersonalOrganization(session.user.id);

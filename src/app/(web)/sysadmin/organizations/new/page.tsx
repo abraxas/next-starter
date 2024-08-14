@@ -1,7 +1,7 @@
 import { serverContainer } from "@services/serverContainer";
 import { Box } from "@chakra-ui/react";
 import OrganizationForm from "@/app/(web)/sysadmin/organizations/components/OrganizationForm";
-import { UserService } from "@services/server/users/UserService";
+import { UserService } from "@services/server/users/User.Service";
 import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
 async function NewOrganizationPage() {

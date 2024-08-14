@@ -32,7 +32,7 @@ import {
 import { type NavItem } from "@/app/(web)/components/Nav";
 import NavOrganizationDropdown from "@/app/(web)/components/NavOrganizationDropdown";
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { OrganizationService } from "@services/server/organizations/Organization.service";
 import { revalidatePath } from "next/cache";
 import { Organization, User } from "@prisma/client";
 import {

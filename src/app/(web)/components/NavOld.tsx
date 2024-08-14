@@ -17,7 +17,7 @@ import { auth } from "@/lib/auth";
 import NavLink from "@/app/(web)/components/NavLink";
 import { revalidatePath } from "next/cache";
 import { serverContainer } from "@services/serverContainer";
-import { OrganizationService } from "@services/server/organizations/OrganizationService";
+import { OrganizationService } from "@services/server/organizations/Organization.service";
 import NavOrganizationDropdown from "@/app/(web)/components/NavOrganizationDropdown";
 
 interface Props {

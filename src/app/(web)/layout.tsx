@@ -1,11 +1,6 @@
-// app/layout.tsx
-import { ClientProviders } from "../providers/client-providers";
-import { fonts } from "@/app/fonts";
-import Nav from "@/app/(web)/components/Nav";
 import React from "react";
-import { Box } from "@chakra-ui/react";
-import ServerProviders from "@/app/providers/server-providers";
 import Providers from "@/app/providers/providers";
+import ChakraAppShell from "@/app/(web)/components/ChakraAppShell";
 
 export default function RootLayout({
   children,
@@ -14,8 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <Nav />
-      <Box p={4}>{children}</Box>
+      <ChakraAppShell>{children}</ChakraAppShell>
     </Providers>
   );
 }

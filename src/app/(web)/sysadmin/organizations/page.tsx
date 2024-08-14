@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button, Heading, Stack } from "@chakra-ui/react";
-import { OrganizationController } from "@services/server/organizations/OrganizationController";
+import { OrganizationController } from "@services/server/organizations/Organization.Controller";
 import { serverContainer } from "@services/serverContainer";
 import OrganizationTable from "@/app/(web)/sysadmin/organizations/components/OrganizationTable";
 import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
