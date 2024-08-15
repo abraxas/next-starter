@@ -21,6 +21,7 @@ import {
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { codeAction } from "@/app/(user)/login/actions";
 
 type LoginFormProps = {
   credentialLoginAction: (foo: any) => any;
@@ -43,6 +44,13 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
     router.push(`/auth/${process.env.NEXT_PUBLIC_AUTH_AUTO_REDIRECT}`);
     return <div />;
   }
+
+  const emailLoginAction = async (formData: FormData) => {
+    const email = formData.get("email") as string;
+    const result = await codeAction({ email });
+    console.log({ result });
+    return router.push(`/auth/email/code?email=${email}`);
+  };
 
   return (
     <Flex
@@ -75,7 +83,7 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
               <Container>Sign in with Google</Container>
             </Button>
           </Stack>
-          {process.env.AUTH_CREDENTIALS && (
+          {process.env.NEXT_PUBLIC_ALLOW_EMAIL_AUTH && (
             <React.Fragment>
               <Box position="relative" py={10}>
                 <Divider />
@@ -85,30 +93,21 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
               </Box>
 
               <Stack spacing={4}>
-                <form action={loginAction}>
+                <Text>Sign in using your email address.</Text>
+                <form action={emailLoginAction}>
                   {loginError && (
                     <Alert status="error">
                       <AlertIcon />
                       {loginError}
                     </Alert>
                   )}
-                  <FormControl id="email">
-                    <FormLabel>Email address</FormLabel>
-                    <Input type="email" name="email" />
-                  </FormControl>
-                  <FormControl id="password">
-                    <FormLabel>Password</FormLabel>
-                    <Input type="password" name="password" />
-                  </FormControl>
+                  <Stack pb={5}>
+                    <FormControl id="email">
+                      <FormLabel>Email address</FormLabel>
+                      <Input type="email" name="email" />
+                    </FormControl>
+                  </Stack>
                   <Stack spacing={10}>
-                    <Stack
-                      direction={{ base: "column", sm: "row" }}
-                      align={"start"}
-                      justify={"space-between"}
-                    >
-                      <Checkbox>Remember me</Checkbox>
-                      <Text color={"blue.400"}>Forgot password?</Text>
-                    </Stack>
                     <Button
                       type="submit"
                       bg={"blue.400"}

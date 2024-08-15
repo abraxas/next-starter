@@ -10,16 +10,40 @@ const ServerConfigSchema = z.object({
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
   GOOGLE_REDIRECT_URI: z.string().optional(),
+
+  EMAIL_FROM: z.string().optional(),
+  EMAIL_SERVER: z.string().optional(),
+  EMAIL_PORT: z.number().optional(),
+  EMAIL_USER: z.string().optional(),
+  EMAIL_PASSWORD: z.string().optional(),
 });
 
 @injectable()
 export default class ServerConfig extends ClientConfig {
   databaseUrl?: string;
 
+  email?: {
+    from?: string;
+    host?: string;
+    port?: number;
+    user?: string;
+    password?: string;
+  };
+
   public constructor() {
     super();
     const config = ServerConfigSchema.parse(process.env);
     this.databaseUrl = config.DATABASE_URL;
+
+    if (config.EMAIL_FROM) {
+      this.email = {
+        from: config.EMAIL_FROM,
+        host: config.EMAIL_SERVER,
+        port: config.EMAIL_PORT,
+        user: config.EMAIL_USER,
+        password: config.EMAIL_PASSWORD,
+      };
+    }
   }
 }
 

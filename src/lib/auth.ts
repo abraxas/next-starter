@@ -2,15 +2,12 @@ import { Lucia, Session, User } from "lucia";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { Google } from "arctic";
-import { serverContainer } from "@services/serverContainer";
 import { PrismaService } from "@services/server/PrismaService";
-import { TYPES } from "@services/types";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { User as UserModel } from "@prisma/client";
 
 const prismaService = new PrismaService();
 const db = prismaService.client;
-
 const adapter = new PrismaAdapter(db.session, db.user);
 
 export const lucia = new Lucia(adapter, {
@@ -22,6 +19,7 @@ export const lucia = new Lucia(adapter, {
   getUserAttributes: (attributes) => {
     return {
       email: attributes.email,
+      email_verified: attributes.emailVerified,
       image: attributes.image,
       //fnord: attributes,
     };
@@ -33,12 +31,6 @@ export const google = new Google(
   process.env.GOOGLE_CLIENT_SECRET!,
   process.env.GOOGLE_REDIRECT_URI!,
 );
-
-// export const googleAuth = google(lucia, {
-//     clientId: process.env.GOOGLE_CLIENT_ID!,
-//     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-//     redirectUri: process.env.GOOGLE_REDIRECT_URI!,
-// });
 
 export const validateRequest = cache(
   async (): Promise<

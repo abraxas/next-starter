@@ -4,44 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Finalized cleanup">
-      <change afterPath="$PROJECT_DIR$/src/app/providers/server/SessionProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/auth/client.ts" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="More broken junk from imported renames from cashcard">
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/auth/[...nextauth]/route.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/tsconfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav/NavContents.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/Nav/actions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/NavLink.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/NavOld.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/NavOrganizationDropdown.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/NavResponsiveWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/client/SessionWrapper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server/AppSessionProvider.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/prisma.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -251,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723596442443</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="More broken junk from imported renames from cashcard">
+      <option name="closed" value="true" />
+      <created>1723600389499</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723600389499</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +259,8 @@
     <MESSAGE value="Goodbye FluentRouteBuilder" />
     <MESSAGE value="Cleaned up for some nextcash changes.&#10;&#10;Still need to bring back lucia" />
     <MESSAGE value="Finalized cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalized cleanup" />
+    <MESSAGE value="More broken junk from imported renames from cashcard" />
+    <option name="LAST_COMMIT_MESSAGE" value="More broken junk from imported renames from cashcard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -287,6 +274,13 @@
           <url>file://$PROJECT_DIR$/src/services/serverContainer.ts</url>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(user)/auth/email/route.ts</url>
+          <line>9</line>
+          <log-expression expression="async function sendCodeEmail(email: string, code: string) {&#10;  const config = serverContainer.get&lt;ServerConfig&gt;(ServerConfig);&#10;&#10;  // send email using nodemailer&#10;  console.log(`Sending code ${code} to ${email}`);&#10;  const subject = &quot;Your code&quot;;&#10;  const text = `Your code is ${code}`;&#10;&#10;  const transporter = nodemailer.createTransport({&#10;    host: config.email?.host,&#10;    port: 587,&#10;    secure: false,&#10;    auth: {&#10;      user: config.email?.user,&#10;      pass: config.email?.password,&#10;    },&#10;  });&#10;&#10;  const mailOptions = {&#10;    from: config.email?.from,&#10;    to: email,&#10;    subject,&#10;    text,&#10;  };&#10;&#10;  try {&#10;    await transporter.sendMail(mailOptions);&#10;  } catch (e) {&#10;    console.error(e);&#10;    throw e;&#10;  }&#10;}&#10;&#10;const BodySchema = z.object({&#10;  email: z.string().email(),&#10;  accountId: z.string().optional(),&#10;});" language="JavaScript" />
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

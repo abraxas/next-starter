@@ -40,8 +40,10 @@ import UserDropdown, {
 } from "@/app/(web)/components/ChakraAppShell/UserDropdown";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 interface NavItemProps extends FlexProps {
   icon?: IconType;
+  href?: string;
   active?: boolean;
   children: React.ReactNode;
 }
@@ -57,6 +59,10 @@ type LinkItemProps = {
   icon?: IconType;
   href?: string;
 };
+
+function linkToUniqueKey(link: LinkItemProps) {
+  return JSON.stringify(link);
+}
 
 interface SidebarProps extends BoxProps {
   linkItems: Array<LinkItemProps>;
@@ -82,69 +88,65 @@ const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Cashcard
+          Starter
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {linkItems.map((link) => (
-        <>
+        <React.Fragment key={linkToUniqueKey(link)}>
           {link.type === "header" ? (
             <Heading size="md" p={2} pl={5}>
               {link.name}
             </Heading>
           ) : (
-            <Link href={link.href ?? ""}>
-              <NavItem
-                key={link.name}
-                icon={link.icon}
-                active={isActive(link.href ?? "")}
-              >
-                {link.name}
-              </NavItem>
-            </Link>
+            <NavItem
+              href={link.href}
+              key={link.name}
+              icon={link.icon}
+              active={isActive(link.href ?? "")}
+            >
+              {link.name}
+            </NavItem>
           )}
-        </>
+        </React.Fragment>
       ))}
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, active, ...rest }: NavItemProps) => {
+const NavItem = ({ href, icon, children, active, ...rest }: NavItemProps) => {
   return (
-    <Box
-      as="a"
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        style={{ fontWeight: active ? 700 : 400 }}
-        bg={active ? "brand.600" : "transparent"}
-        color={active ? "white" : "brand.900"}
-        _hover={{
-          bg: "brand.200",
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Box>
+    <Link href={href || ""}>
+      <Box style={{ textDecoration: "none" }} _focus={{ boxShadow: "none" }}>
+        <Flex
+          align="center"
+          p="4"
+          mx="4"
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          style={{ fontWeight: active ? 700 : 400 }}
+          bg={active ? "brand.600" : "transparent"}
+          color={active ? "white" : "brand.900"}
+          _hover={{
+            bg: "brand.200",
+          }}
+          {...rest}
+        >
+          {icon && (
+            <Icon
+              mr="4"
+              fontSize="16"
+              _groupHover={{
+                color: "white",
+              }}
+              as={icon}
+            />
+          )}
+          {children}
+        </Flex>
+      </Box>
+    </Link>
   );
 };
 
@@ -175,7 +177,7 @@ const MobileNav = ({ onOpen, userDropdownProps, ...rest }: MobileProps) => {
         fontFamily="monospace"
         fontWeight="bold"
       >
-        Cashcard
+        Starter
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>

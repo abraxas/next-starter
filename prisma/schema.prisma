@@ -60,12 +60,13 @@ model Session {
   @@schema("public")
 }
 
-model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
+model EmailCode {
+  id        String   @id @default(cuid())
+  code      String
+  accountId String?
+  email     String   @unique
+  expiresAt DateTime
 
-  @@id([identifier, token])
   @@schema("public")
 }
 

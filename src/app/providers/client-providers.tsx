@@ -5,7 +5,6 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ColorModeScript } from "@chakra-ui/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import SessionWrapper from "@/app/providers/client/SessionWrapper";
 
 const theme = extendTheme({
   colors: {
