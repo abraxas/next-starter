@@ -6,7 +6,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  schemas  = ["public"]
+  schemas  = ["public", "todo"]
 }
 
 model User {
@@ -24,6 +24,8 @@ model User {
   updatedAt        DateTime           @updatedAt
   adminUser        AdminUser?
   OrganizationUser OrganizationUser[]
+  TodoLists        TodoList[]
+  Totp             Totp?
 
   @@schema("public")
 }
@@ -87,6 +89,18 @@ model Authenticator {
   @@schema("public")
 }
 
+model Totp {
+  id        String   @id @default(cuid())
+  secret    String
+  userId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@schema("public")
+}
+
 model AdminUser {
   id     String @id @default(uuid())
   userId String @unique
@@ -129,4 +143,32 @@ model Organization {
   organizationUsers OrganizationUser[]
 
   @@schema("public")
+}
+
+model TodoList {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  TodoItems TodoItem[]
+
+  @@schema("todo")
+}
+
+model TodoItem {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  listId      String
+  completed   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  list TodoList @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  @@schema("todo")
 }

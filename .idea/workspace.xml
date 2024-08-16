@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="More broken junk from imported renames from cashcard">
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Massive improvements.  Lucia.  Email code.  Navwrapper.">
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723600389499</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Massive improvements.  Lucia.  Email code.  Navwrapper.">
+      <option name="closed" value="true" />
+      <created>1723685184113</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1723685184113</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +258,8 @@
     <MESSAGE value="Cleaned up for some nextcash changes.&#10;&#10;Still need to bring back lucia" />
     <MESSAGE value="Finalized cleanup" />
     <MESSAGE value="More broken junk from imported renames from cashcard" />
-    <option name="LAST_COMMIT_MESSAGE" value="More broken junk from imported renames from cashcard" />
+    <MESSAGE value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
+    <option name="LAST_COMMIT_MESSAGE" value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
