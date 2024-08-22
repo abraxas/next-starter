@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Massive improvements.  Lucia.  Email code.  Navwrapper.">
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileComponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/components/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/profile/page.tsx" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="What will someday be a profile page :)">
+      <change afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/models/validators/User.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,34 +44,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.All Tests.executor": "Run",
-    "Jest.OrganizationService.should return default organization for single tenant.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "lucia-2",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "21.7.1",
-    "javascript.nodejs.core.library.typings.version": "20.14.10",
-    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services/server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest",
-    "nodejs_interpreter_path": "wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node",
-    "nodejs_package_manager_path": "yarn",
-    "npm.db:studio.executor": "Run",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
-    "ts.external.directory.path": "C:\\Users\\cjaym\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.All Tests.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrganizationService.should return default organization for single tenant.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lucia-2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.7.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.14.10&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services/server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;npm.db:studio.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\cjaym\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services\server" />
@@ -75,11 +81,11 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(api)\api\auth" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\admin\organizations" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services\client\config" />
-      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services\server\config" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\NavContents.tsx" />
@@ -162,6 +168,7 @@
       <workItem from="1721082601667" duration="39430000" />
       <workItem from="1721414683315" duration="70110000" />
       <workItem from="1723595343452" duration="804000" />
+      <workItem from="1724285690512" duration="1445000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />
@@ -235,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723685184113</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="What will someday be a profile page :)">
+      <option name="closed" value="true" />
+      <created>1723771673082</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723771673082</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +274,8 @@
     <MESSAGE value="Finalized cleanup" />
     <MESSAGE value="More broken junk from imported renames from cashcard" />
     <MESSAGE value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
-    <option name="LAST_COMMIT_MESSAGE" value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
+    <MESSAGE value="What will someday be a profile page :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="What will someday be a profile page :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -271,14 +287,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/services/serverContainer.ts</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(user)/auth/email/route.ts</url>
           <line>9</line>
           <log-expression expression="async function sendCodeEmail(email: string, code: string) {&#10;  const config = serverContainer.get&lt;ServerConfig&gt;(ServerConfig);&#10;&#10;  // send email using nodemailer&#10;  console.log(`Sending code ${code} to ${email}`);&#10;  const subject = &quot;Your code&quot;;&#10;  const text = `Your code is ${code}`;&#10;&#10;  const transporter = nodemailer.createTransport({&#10;    host: config.email?.host,&#10;    port: 587,&#10;    secure: false,&#10;    auth: {&#10;      user: config.email?.user,&#10;      pass: config.email?.password,&#10;    },&#10;  });&#10;&#10;  const mailOptions = {&#10;    from: config.email?.from,&#10;    to: email,&#10;    subject,&#10;    text,&#10;  };&#10;&#10;  try {&#10;    await transporter.sendMail(mailOptions);&#10;  } catch (e) {&#10;    console.error(e);&#10;    throw e;&#10;  }&#10;}&#10;&#10;const BodySchema = z.object({&#10;  email: z.string().email(),&#10;  accountId: z.string().optional(),&#10;});" language="JavaScript" />
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

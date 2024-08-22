@@ -26,21 +26,19 @@ import {
 } from "@chakra-ui/react";
 import {
   FiHome,
-  FiTrendingUp,
   FiCompass,
   FiStar,
   FiSettings,
   FiMenu,
   FiBell,
-  FiChevronDown,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
 import UserDropdown, {
   UserDropdownProps,
 } from "@/app/(web)/components/ChakraAppShell/UserDropdown";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useMemo } from "react";
 interface NavItemProps extends FlexProps {
   icon?: IconType;
   href?: string;
@@ -209,6 +207,7 @@ const ChakraAppShellClient = ({
   children,
   userDropdownProps,
 }: ChakraAppShellClientProps) => {
+  const pathname = usePathname();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const baseLinkItems: Array<LinkItemProps> = [
@@ -230,12 +229,14 @@ const ChakraAppShellClient = ({
   ];
 
   //if path starts with /sysadmin, use sysadmin link items
-  const linkItems = window.location.pathname.startsWith("/sysadmin")
+  const linkItems = pathname.startsWith("/sysadmin")
     ? sysadminLinkItems
     : baseLinkItems;
 
+  const bgValue = useColorModeValue("white", "brand.900");
+
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" bg={bgValue}>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}

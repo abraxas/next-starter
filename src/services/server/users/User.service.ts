@@ -84,4 +84,21 @@ export class UserService {
     const user = await this.getCurrentUser();
     return this.getAbility(user);
   }
+
+  async updateUser(id: string, data: Prisma.UserUpdateInput) {
+    return this.prismaService.client.user.update({
+      where: {
+        id,
+      },
+      data,
+    });
+  }
+
+  async updateCurrentUser(data: Prisma.UserUpdateInput) {
+    const user = await this.getCurrentUser();
+    if (!user) {
+      throw new Error("User not found");
+    }
+    return this.updateUser(user.id, data);
+  }
 }

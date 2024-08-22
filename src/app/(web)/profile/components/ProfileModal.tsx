@@ -1,12 +1,13 @@
 "use client";
 
 import { User } from "@prisma/client";
-import ProfileForm from "@/app/(user)/profile/components/ProfileForm";
+import ProfileForm from "@/app/(web)/profile/components/ProfileForm";
 import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import { onSubmitAction } from "@/app/(user)/profile/components/actions";
+import { onSubmitAction } from "@/app/(web)/profile/components/actions";
+import ProfileComponent from "@/app/(web)/profile/components/ProfileComponent";
 
-export default function ProfileComponent({ user }: { user: User }) {
+export default function ProfileModal({ user }: { user: User }) {
   const router = useRouter();
 
   function onClose() {
@@ -31,9 +32,9 @@ export default function ProfileComponent({ user }: { user: User }) {
         bg={useColorModeValue("white", "gray.700")}
         boxShadow={"lg"}
         p={8}
-        width={"400px"} // Increase the width of the form
+        minWidth={"400px"} // Increase the width of the form
       >
-        <ProfileForm user={user} onClose={onClose} onSubmit={onSubmit} />
+        <ProfileComponent user={user} />
       </Box>
     </Flex>
   );

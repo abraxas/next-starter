@@ -8283,6 +8283,7 @@ __metadata:
     uuid: "npm:^10.0.0"
     yargs: "npm:^17.7.2"
     zod: "npm:^3.23.8"
+    zod-form-data: "npm:^2.0.2"
   languageName: unknown
   linkType: soft
 
@@ -10705,6 +10706,15 @@ __metadata:
   version: 2.1.2
   resolution: "yoctocolors-cjs@npm:2.1.2"
   checksum: 10c0/a0e36eb88fea2c7981eab22d1ba45e15d8d268626e6c4143305e2c1628fa17ebfaa40cd306161a8ce04c0a60ee0262058eab12567493d5eb1409780853454c6f
+  languageName: node
+  linkType: hard
+
+"zod-form-data@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "zod-form-data@npm:2.0.2"
+  peerDependencies:
+    zod: ">= 3.11.0"
+  checksum: 10c0/962ad1d3f9ffead8c794b7adefdd3192ebb6483b3cd3b9f9295d5ffb517d15889b33994576ec2a4c56785e3bc0b4843aa007299d4a6c29bc750a367715174794
   languageName: node
   linkType: hard
 

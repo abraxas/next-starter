@@ -11,6 +11,7 @@ import {
   Spacer,
   ButtonGroup,
   HStack,
+  Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { User } from "@prisma/client";
@@ -19,7 +20,7 @@ import { useFormState } from "react-dom";
 interface ProfileFormProps {
   user: User;
   onClose: () => void;
-  onSubmit: (state: Partial<User>) => {} | Promise<{}>;
+  onSubmit: any; //(state: {}, formData: FormData) => {} | Promise<{}>;
 }
 
 export default function ProfileForm({
@@ -30,7 +31,8 @@ export default function ProfileForm({
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
 
-  const [state, formAction] = useFormState(onSubmit, {});
+  const [state, formAction] = useFormState<Partial<User>>(onSubmit, {});
+  console.log({ formState: state });
 
   return (
     <Stack spacing={4}>
@@ -46,19 +48,16 @@ export default function ProfileForm({
         </FormControl>
         <FormControl id="name" mt={4}>
           <FormLabel>Name</FormLabel>
-          <Input
-            type="text"
-            value={name!}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <Input type="text" name="name" defaultValue={name ?? ""} />
         </FormControl>
         <FormControl id="email" mt={4}>
           <FormLabel>Email</FormLabel>
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          {/*<Input*/}
+          {/*  type="email"*/}
+          {/*  value={email}*/}
+          {/*  onChange={(e) => setEmail(e.target.value)}*/}
+          {/*/>*/}
+          <Text p={1}>{email}</Text>
         </FormControl>
         <Flex pt={4} gap={5} align="center">
           <Button
