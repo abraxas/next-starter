@@ -13,26 +13,38 @@ import {
   HStack,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { User } from "@prisma/client";
 import { useFormState } from "react-dom";
 
-interface ProfileFormProps {
-  user: User;
+interface ProfileFormProps<T extends Partial<User>> {
+  user: T;
   onClose: () => void;
   onSubmit: any; //(state: {}, formData: FormData) => {} | Promise<{}>;
+  hideImage?: boolean;
 }
 
-export default function ProfileForm({
+export default function ProfileForm<T extends Partial<User>>({
   user,
   onClose,
   onSubmit,
-}: ProfileFormProps) {
+  hideImage,
+}: ProfileFormProps<T>) {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
 
-  const [state, formAction] = useFormState<Partial<User>>(onSubmit, {});
+  const [state, formAction] = useFormState<any>(onSubmit, {});
   console.log({ formState: state });
+
+  const userImage = useMemo(() => {
+    return user.image;
+  }, [user?.image]);
+  function getError(field: string) {
+    return state?.error?.fieldErrors[field] ?? [];
+  }
+  function isError(field: string) {
+    return getError(field).length > 0;
+  }
 
   return (
     <Stack spacing={4}>
@@ -40,15 +52,25 @@ export default function ProfileForm({
         <FormControl id="image" textAlign="center">
           {" "}
           {/* Center the profile image */}
-          {user.image ? (
-            <Avatar size="2xl" src={user.image} />
-          ) : (
-            <Avatar size="2xl" />
-          )}
+          {!hideImage ? (
+            userImage ? (
+              <Avatar size="2xl" src={userImage} />
+            ) : (
+              <Avatar size="2xl" />
+            )
+          ) : null}
         </FormControl>
         <FormControl id="name" mt={4}>
           <FormLabel>Name</FormLabel>
-          <Input type="text" name="name" defaultValue={name ?? ""} />
+          <Input
+            type="text"
+            name="name"
+            isInvalid={isError("name")}
+            defaultValue={name ?? ""}
+          />
+          {isError("name") && (
+            <Text color="red.500">{getError("name").join(", ")}</Text>
+          )}
         </FormControl>
         <FormControl id="email" mt={4}>
           <FormLabel>Email</FormLabel>

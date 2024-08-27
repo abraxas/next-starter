@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { ColorModeScript } from "@chakra-ui/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import RetoastProvider from "@/app/providers/client/RetoastProvider";
 
 const theme = extendTheme({
   colors: {
@@ -28,6 +29,7 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <React.Fragment>
       <QueryClientProvider client={queryClient}>
+        <RetoastProvider />
         <ColorModeScript />
         <ChakraProvider theme={theme}>{children}</ChakraProvider>
       </QueryClientProvider>

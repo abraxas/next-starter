@@ -25,7 +25,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { codeAction } from "@/app/(user)/login/actions";
-import { loginUser, postForm } from "@/app/(user)/auth/email/code/actions";
+import { loginUser, postForm } from "@/app/(user)/auth/email/actions";
 
 type LoginFormProps = {
   credentialLoginAction: (foo: any) => any;
@@ -50,9 +50,15 @@ export default function CodeForm() {
   console.log({ email, code });
   const codeLoginAction = async (formData: FormData) => {
     const result = await loginUser({ code, email });
+    console.log({ result });
+    if (result?.data?.redirect) {
+      return router.push(result.data.redirect);
+    }
 
     if (result?.data?.error) {
       console.log(result?.data?.error);
+      setLoginError(result?.data?.error);
+      return;
     }
     return router.push("/");
   };

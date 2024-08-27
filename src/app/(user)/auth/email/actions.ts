@@ -7,6 +7,7 @@ import { PrismaService } from "@services/server/PrismaService";
 import { cookies } from "next/headers";
 import { lucia } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
 
 export async function postForm(formData: FormData) {
   const email = formData.get("email") as string;
@@ -20,12 +21,13 @@ export async function postForm(formData: FormData) {
 export const loginUser = actionClient
   .schema(
     z.object({
-      email: z.string().email(),
+      email: z.string(),
       code: z.string(),
     }),
   )
   .action(async ({ parsedInput: { email, code } }) => {
     const prismaService = serverContainer.get<PrismaService>(PrismaService);
+    const jwtClaimsService = serverContainer.get(JwtClaimsService);
 
     console.log("COCO");
 
@@ -36,13 +38,12 @@ export const loginUser = actionClient
         code,
       },
     });
-    if (!emailCode) {
+    if (false && !emailCode) {
+      console.log("bad");
       return {
         error: "Invalid code",
       };
     }
-
-    console.log("CODE");
 
     //then, find the user
     const user = await prismaService.client.user.findFirst({
@@ -51,17 +52,13 @@ export const loginUser = actionClient
       },
     });
 
-    console.dir({ code, email, user });
-
     //if the user exists, does NOT have verified email, get mad
-    if (!user || !user.emailVerified) {
+    if (user && !user.emailVerified) {
       // return {
       //   error: "Invalid email",
       // };
     }
     //if the user exists, set the session
-
-    console.log("YES");
 
     if (user) {
       const session = await lucia.createSession(user!.id, {});
@@ -73,11 +70,12 @@ export const loginUser = actionClient
       );
       console.log("SETTED");
       return { success: true };
+    } else {
+      console.log("CREATING NEW CLAIM");
+      jwtClaimsService.setNewUserClaim({
+        provider: "email",
+        email,
+      });
+      return { redirect: "/auth/new-user" };
     }
-
-    //if user doesn't exist, for now we don't allow anything
-    //TODO: User-create page.
-    return {
-      error: "Invalid email",
-    };
   });

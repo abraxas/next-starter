@@ -10,6 +10,13 @@ const prismaService = new PrismaService();
 const db = prismaService.client;
 const adapter = new PrismaAdapter(db.session, db.user);
 
+declare module "lucia" {
+  interface Register {
+    Lucia: typeof lucia;
+    DatabaseUserAttributes: Omit<UserModel, "id">;
+  }
+}
+
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
     attributes: {
@@ -77,10 +84,3 @@ export const logout = async () => {
   lucia.invalidateSession(cookies().get(lucia.sessionCookieName)?.value!);
   cookies().delete(lucia.sessionCookieName);
 };
-
-declare module "lucia" {
-  interface Register {
-    Lucia: typeof lucia;
-    DatabaseUserAttributes: Omit<UserModel, "id">;
-  }
-}

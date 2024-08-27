@@ -49,7 +49,7 @@ export default function LoginForm({ credentialLoginAction }: LoginFormProps) {
     const email = formData.get("email") as string;
     const result = await codeAction({ email });
     console.log({ result });
-    return router.push(`/auth/email/code?email=${email}`);
+    return router.push(`/auth/email/code?email=${encodeURIComponent(email)}`);
   };
 
   return (

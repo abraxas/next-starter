@@ -13,6 +13,10 @@ export const UserSchema = z.object({
 
 export const PartialUserSchema = UserSchema.partial();
 
-export const UserFormDataSchema = zfd
-  .formData(PartialUserSchema)
+export const UserProfileFormDataSchema = zfd
+  .formData(
+    PartialUserSchema.extend({
+      name: z.string().min(1),
+    }),
+  )
   .transform((x) => x as Partial<User>);

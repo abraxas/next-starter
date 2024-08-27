@@ -15,9 +15,9 @@ export default function ProfileModal({ user }: { user: User }) {
   }
 
   async function onSubmit(state: Partial<User>) {
-    const result = await onSubmitAction(state);
-    console.log(result);
-    return result;
+    //const result = await onSubmitAction(state);
+    //console.log(result);
+    //return result;
   }
 
   return (

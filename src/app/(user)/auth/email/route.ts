@@ -77,5 +77,5 @@ export default async function POST(request: Request): Promise<Response> {
 
   const code = await generateEmailCode(email, accountId);
   await sendCodeEmail(email, code.code);
-  redirect("/auth/email/code?email=" + email);
+  redirect("/auth/email/code?email=" + encodeURIComponent(email));
 }

@@ -4,18 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="What will someday be a profile page :)">
-      <change afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/models/validators/User.ts" afterDir="false" />
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="It works.  Stop changing it.">
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/providers/client/RetoastProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/util/useRetoast.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/code/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/models/validators/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/models/validators/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/serverContainer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +93,11 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\(email)" />
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\email" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(api)\api\auth" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\admin\organizations" />
-      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src" />
-      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services\client\config" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\NavContents.tsx" />
@@ -168,7 +180,7 @@
       <workItem from="1721082601667" duration="39430000" />
       <workItem from="1721414683315" duration="70110000" />
       <workItem from="1723595343452" duration="804000" />
-      <workItem from="1724285690512" duration="1445000" />
+      <workItem from="1724285690512" duration="21974000" />
     </task>
     <task id="LOCAL-00001" summary="The prisma-port is real.  It's just cleaner">
       <option name="closed" value="true" />
@@ -250,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723771673082</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="It works.  Stop changing it.">
+      <option name="closed" value="true" />
+      <created>1724290373328</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724290373328</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +295,8 @@
     <MESSAGE value="More broken junk from imported renames from cashcard" />
     <MESSAGE value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
     <MESSAGE value="What will someday be a profile page :)" />
-    <option name="LAST_COMMIT_MESSAGE" value="What will someday be a profile page :)" />
+    <MESSAGE value="It works.  Stop changing it." />
+    <option name="LAST_COMMIT_MESSAGE" value="It works.  Stop changing it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -294,6 +315,12 @@
           <line>9</line>
           <log-expression expression="async function sendCodeEmail(email: string, code: string) {&#10;  const config = serverContainer.get&lt;ServerConfig&gt;(ServerConfig);&#10;&#10;  // send email using nodemailer&#10;  console.log(`Sending code ${code} to ${email}`);&#10;  const subject = &quot;Your code&quot;;&#10;  const text = `Your code is ${code}`;&#10;&#10;  const transporter = nodemailer.createTransport({&#10;    host: config.email?.host,&#10;    port: 587,&#10;    secure: false,&#10;    auth: {&#10;      user: config.email?.user,&#10;      pass: config.email?.password,&#10;    },&#10;  });&#10;&#10;  const mailOptions = {&#10;    from: config.email?.from,&#10;    to: email,&#10;    subject,&#10;    text,&#10;  };&#10;&#10;  try {&#10;    await transporter.sendMail(mailOptions);&#10;  } catch (e) {&#10;    console.error(e);&#10;    throw e;&#10;  }&#10;}&#10;&#10;const BodySchema = z.object({&#10;  email: z.string().email(),&#10;  accountId: z.string().optional(),&#10;});" language="JavaScript" />
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="javascript">
+          <url>file://$PROJECT_DIR$/src/services/client/config/ClientConfig.ts</url>
+          <line>5</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -24,6 +24,7 @@ export default function ProfileComponent({ user }: { user: User }) {
         duration: 9000,
         isClosable: true,
       });
+      router.push("/");
     }
     return result;
   }

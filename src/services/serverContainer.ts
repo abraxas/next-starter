@@ -13,6 +13,7 @@ import { OrganizationController } from "@services/server/organizations/Organizat
 import { cookies } from "next/headers";
 import { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
+import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
 
 export const serverContainer = Container.merge(
   clientContainer,
@@ -25,6 +26,7 @@ serverContainer.bind(OrganizationService).toSelf();
 serverContainer.bind(OrganizationController).toSelf();
 serverContainer.bind(UserService).toSelf();
 serverContainer.bind(UserController).toSelf();
+serverContainer.bind(JwtClaimsService).toSelf();
 
 serverContainer.bind(TYPES.Cookies).toDynamicValue(() => cookies());
 
