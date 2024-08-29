@@ -1,10 +1,8 @@
 import { cookies } from "next/headers";
-import { generateCodeVerifier, OAuth2RequestError } from "arctic";
+import { OAuth2RequestError } from "arctic";
 import { generateIdFromEntropySize } from "lucia";
 import { google, lucia } from "@/lib/auth";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { prismaService } from "@services/server/PrismaService";
-import { TYPES } from "@services/types";
 
 export async function GET(request: Request): Promise<Response> {
   const db = prismaService.client;

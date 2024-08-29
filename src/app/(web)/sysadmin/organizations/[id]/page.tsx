@@ -1,17 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import OrganizationView from "@/app/(web)/sysadmin/organizations/components/OrganizationView";
-import { redirect, useRouter } from "next/navigation";
-import { OrganizationController } from "@services/server/organizations/Organization.controller";
+import { redirect } from "next/navigation";
 import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 import { userService } from "@services/server/users/User.service";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
+import { organizationController } from "@services/server/organizations/Organization.controller";
 
 async function OrganizationPage({ params }: { params: { id: string } }) {
   await userService.redirectIfNotAdmin();
 
-  const organizationController = inversifyServerContainer.get(
-    OrganizationController,
-  );
   const organization = await organizationController.getOrganizationById(
     params.id,
   );

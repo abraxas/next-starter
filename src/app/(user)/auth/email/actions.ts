@@ -2,12 +2,11 @@
 
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { prismaService } from "@services/server/PrismaService";
 import { cookies } from "next/headers";
 import { lucia } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
+import { jwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
 
 export async function postForm(formData: FormData) {
   const email = formData.get("email") as string;
@@ -26,8 +25,6 @@ export const loginUser = actionClient
     }),
   )
   .action(async ({ parsedInput: { email, code } }) => {
-    const jwtClaimsService = inversifyServerContainer.get(JwtClaimsService);
-
     console.log("COCO");
 
     //first, does the code match?

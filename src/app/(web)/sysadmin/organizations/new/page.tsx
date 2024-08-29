@@ -1,4 +1,3 @@
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { Box } from "@chakra-ui/react";
 import OrganizationForm from "@/app/(web)/sysadmin/organizations/components/OrganizationForm";
 import { userService } from "@services/server/users/User.service";

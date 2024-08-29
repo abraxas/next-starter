@@ -6755,13 +6755,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inversify@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "inversify@npm:6.0.2"
-  checksum: 10c0/ac532c9a6e45785dcfd5117f19b5c1705a7ebddf432152cd2d5be3e951d9745fec9ae3c39c166b34945458b4eda3e37afae6a63cccc5033d545b450d54221220
-  languageName: node
-  linkType: hard
-
 "ip-address@npm:^9.0.5":
   version: 9.0.5
   resolution: "ip-address@npm:9.0.5"
@@ -8385,7 +8378,6 @@ __metadata:
     framer-motion: "npm:^6"
     immer: "npm:^10.1.1"
     inquirer: "npm:^10.0.1"
-    inversify: "npm:^6.0.2"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jsonwebtoken: "npm:^9.0.2"

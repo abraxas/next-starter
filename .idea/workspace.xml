@@ -4,29 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Step 1 on removing DI.  Org Service works without injected Prisma.">
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Finally removed inversify.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/client/config/ClientConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/inversifyServerContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/inversifyServerContainer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/clientContainer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/inversifyServerContainer.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724952311389</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Removed almost all remaining services">
+      <option name="closed" value="true" />
+      <created>1724955252924</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724955252924</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +334,9 @@
     <MESSAGE value="It works.  Stop changing it." />
     <MESSAGE value="Working Towards User Creation" />
     <MESSAGE value="Step 1 on removing DI.  Org Service works without injected Prisma." />
-    <option name="LAST_COMMIT_MESSAGE" value="Step 1 on removing DI.  Org Service works without injected Prisma." />
+    <MESSAGE value="Removed almost all remaining services" />
+    <MESSAGE value="Finally removed inversify." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally removed inversify." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -336,7 +348,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(user)/auth/email/route.ts</url>
-          <line>9</line>
+          <line>8</line>
           <log-expression expression="async function sendCodeEmail(email: string, code: string) {&#10;  const config = serverContainer.get&lt;ServerConfig&gt;(ServerConfig);&#10;&#10;  // send email using nodemailer&#10;  console.log(`Sending code ${code} to ${email}`);&#10;  const subject = &quot;Your code&quot;;&#10;  const text = `Your code is ${code}`;&#10;&#10;  const transporter = nodemailer.createTransport({&#10;    host: config.email?.host,&#10;    port: 587,&#10;    secure: false,&#10;    auth: {&#10;      user: config.email?.user,&#10;      pass: config.email?.password,&#10;    },&#10;  });&#10;&#10;  const mailOptions = {&#10;    from: config.email?.from,&#10;    to: email,&#10;    subject,&#10;    text,&#10;  };&#10;&#10;  try {&#10;    await transporter.sendMail(mailOptions);&#10;  } catch (e) {&#10;    console.error(e);&#10;    throw e;&#10;  }&#10;}&#10;&#10;const BodySchema = z.object({&#10;  email: z.string().email(),&#10;  accountId: z.string().optional(),&#10;});" language="JavaScript" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>

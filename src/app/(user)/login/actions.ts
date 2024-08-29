@@ -4,7 +4,6 @@ import { ActionResult } from "next/dist/server/app-render/types";
 import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { prismaService } from "@services/server/PrismaService";
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";

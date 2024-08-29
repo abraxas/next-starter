@@ -39,4 +39,4 @@ export class OrganizationController {
     return this.organizationService.archiveOrganization(id);
   }
 }
-//export const organizationController = new OrganizationController();
+export const organizationController = new OrganizationController();

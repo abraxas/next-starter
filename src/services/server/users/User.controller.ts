@@ -1,9 +1,5 @@
-import "reflect-metadata";
-
-import { injectable } from "inversify";
 import { userService } from "@services/server/users/User.service";
 
-@injectable()
 export class UserController {
   private userService: typeof userService;
   constructor() {
@@ -20,3 +16,5 @@ export class UserController {
     return user;
   }
 }
+
+export const userController = new UserController();

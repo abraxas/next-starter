@@ -1,4 +1,3 @@
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { prismaService } from "@services/server/PrismaService";
 import { TimeSpan, createDate } from "oslo";
 import { generateRandomString, alphabet } from "oslo/crypto";

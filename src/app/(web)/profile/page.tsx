@@ -1,6 +1,5 @@
 "use server";
 
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { redirect } from "next/navigation";
 import ProfileComponent from "@/app/(web)/profile/components/ProfileComponent";
 import { Box, Container, Heading } from "@chakra-ui/react";

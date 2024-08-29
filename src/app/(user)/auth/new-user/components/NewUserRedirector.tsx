@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  JwtClaim,
-  NewUserClaim,
-} from "@services/server/JwtClaims/JwtClaims.service";
-import { useToast } from "@chakra-ui/react";
+import { JwtClaim } from "@services/server/JwtClaims/JwtClaims.service";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import useRetoast from "@/lib/util/useRetoast";

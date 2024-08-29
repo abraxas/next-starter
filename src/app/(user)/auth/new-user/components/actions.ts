@@ -2,9 +2,7 @@
 
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
-import { Prisma } from "@prisma/client";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
-import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
+import { jwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
 import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { userService } from "@services/server/users/User.service";
@@ -22,10 +20,8 @@ export const newUserAction = actionClient
     }),
   )
   .action(async ({ parsedInput: { claim, user } }) => {
-    const jwtService = inversifyServerContainer.get(JwtClaimsService);
-
-    const rawClaim = await jwtService.getClaimFromCookie();
-    const claimData = jwtService.verifyNewUserClaim(rawClaim);
+    const rawClaim = await jwtClaimsService.getClaimFromCookie();
+    const claimData = jwtClaimsService.verifyNewUserClaim(rawClaim);
 
     if (!claimData || claimData.email != user.email) {
       return {

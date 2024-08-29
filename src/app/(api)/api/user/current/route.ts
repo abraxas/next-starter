@@ -1,6 +1,4 @@
-import { userService, UserService } from "@services/server/users/User.service";
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
-import { UserController } from "@services/server/users/User.controller";
+import { userService } from "@services/server/users/User.service";
 
 export async function GET() {
   return userService.getCurrentUser().then((x) => Response.json(x));

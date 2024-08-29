@@ -34,7 +34,6 @@ export const TotpClaimSchema = z.object({
 
 export type JwtClaim = NewUserClaim | TotpClaim;
 
-@injectable()
 export class JwtClaimsService {
   private configService: typeof serverConfig;
   constructor() {
@@ -147,3 +146,5 @@ export class JwtClaimsService {
     cookieStore.set("jwtclaim", jwtToken);
   }
 }
+
+export const jwtClaimsService = new JwtClaimsService();
