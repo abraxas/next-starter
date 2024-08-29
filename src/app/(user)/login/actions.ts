@@ -9,7 +9,7 @@ import { prismaService } from "@services/server/PrismaService";
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
 import { createDate, TimeSpan } from "oslo";
-import ServerConfig from "@services/server/config/ServerConfig";
+import { serverConfig } from "@services/server/config/ServerConfig";
 import nodemailer from "nodemailer";
 import { alphabet, generateRandomString } from "oslo/crypto";
 
@@ -74,8 +74,6 @@ async function generateEmailCode(
 }
 
 async function sendCodeEmail(email: string, code: string) {
-  const config = inversifyServerContainer.get<ServerConfig>(ServerConfig);
-
   // send email using nodemailer
   console.log(`Sending code ${code} to ${email}`);
   const subject = "Your code";
@@ -83,16 +81,16 @@ async function sendCodeEmail(email: string, code: string) {
 
   console.log({
     transport: {
-      host: config.email?.host,
+      host: serverConfig.email?.host,
       port: 587,
       secure: false,
       auth: {
-        user: config.email?.user,
-        pass: config.email?.password,
+        user: serverConfig.email?.user,
+        pass: serverConfig.email?.password,
       },
     },
     mailOptions: {
-      from: config.email?.from,
+      from: serverConfig.email?.from,
       to: email,
       subject,
       text,
@@ -100,17 +98,17 @@ async function sendCodeEmail(email: string, code: string) {
   });
 
   const transporter = nodemailer.createTransport({
-    host: config.email?.host,
+    host: serverConfig.email?.host,
     port: 587,
     secure: false,
     auth: {
-      user: config.email?.user,
-      pass: config.email?.password,
+      user: serverConfig.email?.user,
+      pass: serverConfig.email?.password,
     },
   });
 
   const mailOptions = {
-    from: config.email?.from,
+    from: serverConfig.email?.from,
     to: email,
     subject,
     text,

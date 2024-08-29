@@ -2,7 +2,6 @@ import "reflect-metadata";
 
 import { Container } from "inversify";
 import { clientContainer } from "@services/clientContainer";
-import ServerConfig from "@services/server/config/ServerConfig";
 import { TYPES } from "@services/types";
 import { OrganizationService } from "@services/server/organizations/Organization.service";
 import { UserService } from "@services/server/users/User.service";
@@ -16,10 +15,7 @@ export const inversifyServerContainer = Container.merge(
   new Container(),
 );
 
-inversifyServerContainer.bind(ServerConfig).toSelf();
-inversifyServerContainer.bind(OrganizationService).toSelf();
 inversifyServerContainer.bind(OrganizationController).toSelf();
-inversifyServerContainer.bind(UserService).toSelf();
 inversifyServerContainer.bind(UserController).toSelf();
 inversifyServerContainer.bind(JwtClaimsService).toSelf();
 

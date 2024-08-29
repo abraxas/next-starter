@@ -1,25 +1,22 @@
 import "reflect-metadata";
 
-import { inject, injectable } from "inversify";
-import ServerConfig from "@services/server/config/ServerConfig";
 import {
   prismaService,
   type PrismaService,
 } from "@services/server/PrismaService";
 import { Prisma, Organization } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
-import { TYPES } from "@services/types";
-import { type ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { PureAbility } from "@casl/ability";
 import { accessibleBy, PrismaQuery } from "@casl/prisma";
+import { serverConfig } from "@services/server/config/ServerConfig";
+import { cookies } from "next/headers";
 
-@injectable()
 export class OrganizationService {
+  private serverConfig: typeof serverConfig;
   private prismaService: PrismaService;
-  constructor(
-    private serverConfig: ServerConfig,
-    @inject(TYPES.Cookies) private cookies: ReadonlyRequestCookies,
-  ) {
+
+  constructor() {
+    this.serverConfig = serverConfig;
     this.prismaService = prismaService;
   }
 
@@ -135,12 +132,14 @@ export class OrganizationService {
   }
 
   async getCurrentOrganization() {
-    const organizationId = this.cookies.get("organizationId");
+    const organizationId = cookies().get("organizationId");
     if (!organizationId?.value) return undefined;
     return this.getOrganizationById(organizationId.value);
   }
 
   async setCurrentOrganization(organizationId: string) {
-    this.cookies.set("organizationId", organizationId);
+    cookies().set("organizationId", organizationId);
   }
 }
+
+export const organizationService = new OrganizationService();

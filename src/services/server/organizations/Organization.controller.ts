@@ -1,16 +1,17 @@
 import "reflect-metadata";
 
-import { injectable } from "inversify";
-import { OrganizationService } from "@services/server/organizations/Organization.service";
-import { UserService } from "@services/server/users/User.service";
 import { Prisma } from "@prisma/client";
+import { organizationService } from "@services/server/organizations/Organization.service";
+import { userService } from "@services/server/users/User.service";
 
-@injectable()
 export class OrganizationController {
-  constructor(
-    private organizationService: OrganizationService,
-    private userService: UserService,
-  ) {}
+  private organizationService: typeof organizationService;
+  private userService: typeof userService;
+
+  constructor() {
+    this.userService = userService;
+    this.organizationService = organizationService;
+  }
 
   async getOrganizations({ showArchived }: { showArchived?: boolean } = {}) {
     const ability = await this.userService.getCurrentUserAbility();
@@ -38,3 +39,4 @@ export class OrganizationController {
     return this.organizationService.archiveOrganization(id);
   }
 }
+//export const organizationController = new OrganizationController();

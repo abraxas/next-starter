@@ -3,19 +3,20 @@ import "reflect-metadata";
 import { injectable } from "inversify";
 import { prismaService } from "@services/server/PrismaService";
 import { Prisma, User, Organization } from "@prisma/client";
-import ServerConfig from "@services/server/config/ServerConfig";
-import { OrganizationService } from "@services/server/organizations/Organization.service";
+import { serverConfig } from "@services/server/config/ServerConfig";
+import { organizationService } from "@services/server/organizations/Organization.service";
 import { validateRequest } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { AbilityBuilder, defineAbility, PureAbility } from "@casl/ability";
-import { createPrismaAbility, PrismaAbility } from "@casl/prisma";
+import { createPrismaAbility } from "@casl/prisma";
 
-@injectable()
 export class UserService {
-  constructor(
-    private serverConfig: ServerConfig,
-    private organizationService: OrganizationService,
-  ) {}
+  private serverConfig: typeof serverConfig;
+  private organizationService: typeof organizationService;
+  constructor() {
+    this.serverConfig = serverConfig;
+    this.organizationService = organizationService;
+  }
 
   async getUserSession() {
     return validateRequest();
@@ -115,3 +116,5 @@ export class UserService {
     return this.updateUser(user.id, data);
   }
 }
+
+export const userService = new UserService();

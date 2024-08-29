@@ -1,9 +1,4 @@
-import { Container } from "inversify";
-import ServerConfig from "@services/server/config/ServerConfig";
 import { type OrganizationService } from "@services/server/organizations/Organization.service";
-import Cookies from "nodemailer/lib/fetch/cookies";
-import { TYPES } from "@services/types";
-// Mock implementations
 const mockServerConfig = {
   multiTenant: true,
   defaultOrganizationName: "Default",
@@ -31,8 +26,18 @@ jest.mock("@services/server/PrismaService", () => {
   };
 });
 
-// Set up container for testing
-let container = new Container();
+jest.mock("@services/server/config/ServerConfig", () => {
+  return {
+    serverConfig: mockServerConfig,
+  };
+});
+
+jest.mock("next/headers", () => {
+  return {
+    ...jest.requireActual("next/headers"),
+    cookies: () => mockCookies,
+  };
+});
 
 describe("OrganizationService", () => {
   let service: OrganizationService;
@@ -43,23 +48,7 @@ describe("OrganizationService", () => {
       "@services/server/organizations/Organization.service"
     );
 
-    let container = new Container();
-    container
-      .bind<ServerConfig>(ServerConfig)
-      .toConstantValue(mockServerConfig as any);
-    //container;
-    //  .bind<PrismaService>(PrismaService)
-    //  .toConstantValue(mockPrismaService as any);
-
-    container.bind(TYPES.Cookies).toDynamicValue(() => mockCookies);
-
-    container
-      .bind<OrganizationService>(OrganizationService)
-      .to(OrganizationService);
-
-    service = container.get(OrganizationService);
-
-    //mock @services/server/PrismaService
+    service = new OrganizationService();
   });
 
   it("should create an organization", async () => {

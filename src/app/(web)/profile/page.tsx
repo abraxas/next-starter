@@ -1,14 +1,12 @@
 "use server";
 
 import { inversifyServerContainer } from "@services/inversifyServerContainer";
-import { UserService } from "@services/server/users/User.service";
 import { redirect } from "next/navigation";
 import ProfileComponent from "@/app/(web)/profile/components/ProfileComponent";
 import { Box, Container, Heading } from "@chakra-ui/react";
-import ProfileModal from "@/app/(web)/profile/components/ProfileModal";
+import { userService } from "@services/server/users/User.service";
 
 export default async function ProfilePage() {
-  const userService = inversifyServerContainer.get(UserService);
   const user = await userService.getCurrentUser();
 
   const onClose = () => {};

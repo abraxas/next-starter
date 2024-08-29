@@ -21,7 +21,6 @@ const ConfigSchema = z.object({
     .transform((value) => value === "true"),
 });
 
-@injectable()
 export default class ClientConfig {
   authCredentials?: boolean;
   authAutoRedirect?: string;

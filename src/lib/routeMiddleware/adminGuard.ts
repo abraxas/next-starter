@@ -1,11 +1,9 @@
-import { inversifyServerContainer } from "@services/inversifyServerContainer";
-import { UserService } from "@services/server/users/User.service";
+import { userService } from "@services/server/users/User.service";
 import { redirect } from "next/navigation";
 import { NextApiRequest, NextApiResponse } from "next";
 import { GuardError } from "@/lib/types/errors";
 
 export default async function adminGuard() {
-  const userService = inversifyServerContainer.get(UserService);
   try {
     await userService.assertCurrentUserIsAdmin();
   } catch (e: any) {

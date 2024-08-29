@@ -5,7 +5,7 @@ import { generateRandomString, alphabet } from "oslo/crypto";
 import { z } from "zod";
 import { redirect } from "next/navigation";
 import nodemailer from "nodemailer";
-import ServerConfig from "@services/server/config/ServerConfig";
+import { serverConfig } from "@services/server/config/ServerConfig";
 
 async function generateEmailCode(email: string, accountId?: string) {
   await prismaService.client.emailCode.deleteMany({
@@ -26,25 +26,23 @@ async function generateEmailCode(email: string, accountId?: string) {
 }
 
 async function sendCodeEmail(email: string, code: string) {
-  const config = inversifyServerContainer.get<ServerConfig>(ServerConfig);
-
   // send email using nodemailer
   console.log(`Sending code ${code} to ${email}`);
   const subject = "Your code";
   const text = `Your code is ${code}`;
 
   const transporter = nodemailer.createTransport({
-    host: config.email?.host,
+    host: serverConfig.email?.host,
     port: 587,
     secure: false,
     auth: {
-      user: config.email?.user,
-      pass: config.email?.password,
+      user: serverConfig.email?.user,
+      pass: serverConfig.email?.password,
     },
   });
 
   const mailOptions = {
-    from: config.email?.from,
+    from: serverConfig.email?.from,
     to: email,
     subject,
     text,

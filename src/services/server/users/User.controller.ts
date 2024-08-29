@@ -1,12 +1,14 @@
 import "reflect-metadata";
 
 import { injectable } from "inversify";
-import { UserService } from "@services/server/users/User.service";
-import { omit } from "@/lib/util/objects";
+import { userService } from "@services/server/users/User.service";
 
 @injectable()
 export class UserController {
-  constructor(private userService: UserService) {}
+  private userService: typeof userService;
+  constructor() {
+    this.userService = userService;
+  }
 
   async getSession() {
     console.log("OI");

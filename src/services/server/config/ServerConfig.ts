@@ -18,8 +18,7 @@ const ServerConfigSchema = z.object({
   EMAIL_PASSWORD: z.string().optional(),
 });
 
-@injectable()
-export default class ServerConfig extends ClientConfig {
+export class ServerConfig extends ClientConfig {
   databaseUrl?: string;
   authSecret: string;
 
@@ -49,4 +48,4 @@ export default class ServerConfig extends ClientConfig {
   }
 }
 
-export { ServerConfig };
+export const serverConfig = new ServerConfig();

@@ -1,8 +1,8 @@
 import { injectable } from "inversify";
 import { z } from "zod";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import ServerConfig from "@services/server/config/ServerConfig";
+import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { serverConfig } from "@services/server/config/ServerConfig";
 
 export type NewUserClaim = {
   type: "new_user";
@@ -36,7 +36,10 @@ export type JwtClaim = NewUserClaim | TotpClaim;
 
 @injectable()
 export class JwtClaimsService {
-  constructor(private configService: ServerConfig) {}
+  private configService: typeof serverConfig;
+  constructor() {
+    this.configService = serverConfig;
+  }
 
   public getClaimType(jwtToken: string): string;
   public getClaimType(data: JwtClaim | undefined): string;

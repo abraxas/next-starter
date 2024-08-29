@@ -5,9 +5,9 @@ import { z } from "zod";
 import { Prisma } from "@prisma/client";
 import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
-import { UserService } from "@services/server/users/User.service";
 import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
+import { userService } from "@services/server/users/User.service";
 
 const UserSchema = z.object({
   email: z.string(),
@@ -23,7 +23,6 @@ export const newUserAction = actionClient
   )
   .action(async ({ parsedInput: { claim, user } }) => {
     const jwtService = inversifyServerContainer.get(JwtClaimsService);
-    const userService = inversifyServerContainer.get(UserService);
 
     const rawClaim = await jwtService.getClaimFromCookie();
     const claimData = jwtService.verifyNewUserClaim(rawClaim);
