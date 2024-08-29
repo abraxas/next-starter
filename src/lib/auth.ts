@@ -2,11 +2,10 @@ import { Lucia, Session, User } from "lucia";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import { Google } from "arctic";
-import { PrismaService } from "@services/server/PrismaService";
+import { prismaService } from "@services/server/PrismaService";
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
 import { User as UserModel } from "@prisma/client";
 
-const prismaService = new PrismaService();
 const db = prismaService.client;
 const adapter = new PrismaAdapter(db.session, db.user);
 

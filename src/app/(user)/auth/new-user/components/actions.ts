@@ -3,7 +3,7 @@
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { JwtClaimsService } from "@services/server/JwtClaims/JwtClaims.service";
 import { UserService } from "@services/server/users/User.service";
 import { lucia } from "@/lib/auth";
@@ -22,8 +22,8 @@ export const newUserAction = actionClient
     }),
   )
   .action(async ({ parsedInput: { claim, user } }) => {
-    const jwtService = serverContainer.get(JwtClaimsService);
-    const userService = serverContainer.get(UserService);
+    const jwtService = inversifyServerContainer.get(JwtClaimsService);
+    const userService = inversifyServerContainer.get(UserService);
 
     const rawClaim = await jwtService.getClaimFromCookie();
     const claimData = jwtService.verifyNewUserClaim(rawClaim);

@@ -2,10 +2,12 @@ import "reflect-metadata";
 
 import { inject, injectable } from "inversify";
 import ServerConfig from "@services/server/config/ServerConfig";
-import { PrismaService } from "@services/server/PrismaService";
+import {
+  prismaService,
+  type PrismaService,
+} from "@services/server/PrismaService";
 import { Prisma, Organization } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
-import { cookies } from "next/headers";
 import { TYPES } from "@services/types";
 import { type ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { PureAbility } from "@casl/ability";
@@ -13,11 +15,13 @@ import { accessibleBy, PrismaQuery } from "@casl/prisma";
 
 @injectable()
 export class OrganizationService {
+  private prismaService: PrismaService;
   constructor(
     private serverConfig: ServerConfig,
-    private prismaService: PrismaService,
     @inject(TYPES.Cookies) private cookies: ReadonlyRequestCookies,
-  ) {}
+  ) {
+    this.prismaService = prismaService;
+  }
 
   async getOrganizations({
     showArchived = false,

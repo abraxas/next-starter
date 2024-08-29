@@ -4,14 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="It works.  Stop changing it.">
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Working Towards User Creation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/abilityGuard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/adminGuard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/routeMiddleware/withAdminGuard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/PrismaService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/PrismaService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/inversifyServerContainer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,34 +59,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Jest.All Tests.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrganizationService.should return default organization for single tenant.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;lucia-2&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.7.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.14.10&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services/server&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;npm.db:studio.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\cjaym\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Jest.All Tests.executor": "Run",
+    "Jest.Organization.service.spec.ts.executor": "Run",
+    "Jest.OrganizationService.should return default organization for single tenant.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "to__iti",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "21.7.1",
+    "javascript.nodejs.core.library.typings.version": "20.14.10",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/src/services/server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "//wsl.localhost/Ubuntu/home/cjay/projects/next-start/node_modules/jest",
+    "nodejs_interpreter_path": "wsl://Ubuntu@/home/cjay/.nvm/versions/node/v21.7.1/bin/node",
+    "nodejs_package_manager_path": "yarn",
+    "npm.db:studio.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "\\\\wsl.localhost\\Ubuntu\\home\\cjay\\projects\\next-start\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.typescriptcompiler",
+    "ts.external.directory.path": "C:\\Users\\cjaym\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services\server" />
@@ -76,11 +97,11 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\new-user\components" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\(email)" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\email" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)" />
-      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(api)\api\auth" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\NavContents.tsx" />
@@ -90,7 +111,7 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\MobileNav.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Jest.Organization.service.spec.ts">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -110,6 +131,15 @@
         <test-name value="OrganizationService" />
         <test-name value="should return default organization for single tenant" />
       </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Organization.service.spec.ts" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/services/server/organizations/Organization.service.spec.ts" />
       <method v="2" />
     </configuration>
     <configuration name="db:studio" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -134,12 +164,14 @@
     </configuration>
     <list>
       <item itemvalue="Jest.All Tests" />
+      <item itemvalue="Jest.Organization.service.spec.ts" />
       <item itemvalue="Jest.OrganizationService.should return default organization for single tenant" />
       <item itemvalue="npm.db:studio" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.Organization.service.spec.ts" />
         <item itemvalue="npm.dev" />
         <item itemvalue="Jest.OrganizationService.should return default organization for single tenant" />
         <item itemvalue="npm.db:studio" />
@@ -253,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724290373328</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Working Towards User Creation">
+      <option name="closed" value="true" />
+      <created>1724942636086</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724942636086</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +319,8 @@
     <MESSAGE value="Massive improvements.  Lucia.  Email code.  Navwrapper." />
     <MESSAGE value="What will someday be a profile page :)" />
     <MESSAGE value="It works.  Stop changing it." />
-    <option name="LAST_COMMIT_MESSAGE" value="It works.  Stop changing it." />
+    <MESSAGE value="Working Towards User Creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working Towards User Creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -288,10 +329,6 @@
           <url>file://$PROJECT_DIR$/src/services/server/organizations/Organization.Service.ts</url>
           <line>139</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/services/serverContainer.ts</url>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/(user)/auth/email/route.ts</url>
@@ -303,6 +340,12 @@
           <url>file://$PROJECT_DIR$/src/services/client/config/ClientConfig.ts</url>
           <line>5</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(user)/login/actions.ts</url>
+          <line>2</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

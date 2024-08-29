@@ -3,7 +3,7 @@
 import { User } from "@prisma/client";
 import { UserProfileFormDataSchema } from "@/lib/models/validators/User";
 import { UserService } from "@services/server/users/User.service";
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { ZodError } from "zod";
 
 type FieldErrors = {
@@ -29,7 +29,7 @@ function zodErrorToErrors({ error, formError }: ZodErrorToErrorProps): Errors {
 }
 
 export async function onSubmitAction(state: {}, formData: FormData) {
-  const userService = serverContainer.get(UserService);
+  const userService = inversifyServerContainer.get(UserService);
   //convert FormData to a Partial<user>
 
   const {

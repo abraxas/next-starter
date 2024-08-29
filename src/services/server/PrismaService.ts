@@ -16,7 +16,6 @@ const prismaClient = globalThis.prismaGlobal ?? prismaClientSingleton();
 if (process.env.NODE_ENV !== "production")
   globalThis.prismaGlobal = prismaClient;
 
-@injectable()
 export class PrismaService {
   constructor() {}
 
@@ -24,3 +23,5 @@ export class PrismaService {
     return prismaClient;
   }
 }
+
+export const prismaService = new PrismaService();

@@ -16,6 +16,7 @@ const config: Config = {
 
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^@services/(.*)$": "<rootDir>/src/services/$1",
   },
 };
 

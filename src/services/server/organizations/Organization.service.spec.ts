@@ -1,15 +1,14 @@
-import "reflect-metadata";
-
 import { Container } from "inversify";
-import { OrganizationService } from "./Organization.service";
-import { PrismaService } from "@services/server/PrismaService";
 import ServerConfig from "@services/server/config/ServerConfig";
-
+import { type OrganizationService } from "@services/server/organizations/Organization.service";
+import Cookies from "nodemailer/lib/fetch/cookies";
+import { TYPES } from "@services/types";
 // Mock implementations
 const mockServerConfig = {
   multiTenant: true,
   defaultOrganizationName: "Default",
 };
+
 const mockPrismaService = {
   client: {
     organization: {
@@ -20,23 +19,47 @@ const mockPrismaService = {
   },
 };
 
+const mockCookies = {
+  get: jest.fn(),
+  set: jest.fn(),
+};
+
+jest.mock("@services/server/PrismaService", () => {
+  return {
+    ...jest.requireActual("@services/server/PrismaService"),
+    prismaService: mockPrismaService,
+  };
+});
+
 // Set up container for testing
-const container = new Container();
-container
-  .bind<ServerConfig>(ServerConfig)
-  .toConstantValue(mockServerConfig as any);
-container
-  .bind<PrismaService>(PrismaService)
-  .toConstantValue(mockPrismaService as any);
-container
-  .bind<OrganizationService>(OrganizationService)
-  .to(OrganizationService);
+let container = new Container();
 
 describe("OrganizationService", () => {
   let service: OrganizationService;
+  //async import OrganizationService
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    const { OrganizationService } = await import(
+      "@services/server/organizations/Organization.service"
+    );
+
+    let container = new Container();
+    container
+      .bind<ServerConfig>(ServerConfig)
+      .toConstantValue(mockServerConfig as any);
+    //container;
+    //  .bind<PrismaService>(PrismaService)
+    //  .toConstantValue(mockPrismaService as any);
+
+    container.bind(TYPES.Cookies).toDynamicValue(() => mockCookies);
+
+    container
+      .bind<OrganizationService>(OrganizationService)
+      .to(OrganizationService);
+
     service = container.get(OrganizationService);
+
+    //mock @services/server/PrismaService
   });
 
   it("should create an organization", async () => {

@@ -2,8 +2,8 @@
 
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
-import { serverContainer } from "@services/serverContainer";
-import { PrismaService } from "@services/server/PrismaService";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
+import { prismaService } from "@services/server/PrismaService";
 import { cookies } from "next/headers";
 import { lucia } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -26,8 +26,7 @@ export const loginUser = actionClient
     }),
   )
   .action(async ({ parsedInput: { email, code } }) => {
-    const prismaService = serverContainer.get<PrismaService>(PrismaService);
-    const jwtClaimsService = serverContainer.get(JwtClaimsService);
+    const jwtClaimsService = inversifyServerContainer.get(JwtClaimsService);
 
     console.log("COCO");
 

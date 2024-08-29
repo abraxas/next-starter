@@ -1,5 +1,5 @@
 import ChakraAppShellClient from "@/app/(web)/components/ChakraAppShell/ChakraAppShell.Client";
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { UserService } from "@services/server/users/User.service";
 import { OrganizationService } from "@services/server/organizations/Organization.service";
 import { UserDropdownProps } from "@/app/(web)/components/ChakraAppShell/UserDropdown";
@@ -16,12 +16,12 @@ export default async function ChakraAppShell({
 }: {
   children: React.ReactNode;
 }) {
-  const userService = serverContainer.get(UserService);
+  const userService = inversifyServerContainer.get(UserService);
   const user = await userService.getCurrentUser();
 
   const status = user ? "authenticated" : "unauthenticated";
 
-  const organizationService = serverContainer.get(OrganizationService);
+  const organizationService = inversifyServerContainer.get(OrganizationService);
   const organizations = await organizationService.getOrganizations();
   const currentOrganization =
     await organizationService.getCurrentOrganization();

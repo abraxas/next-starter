@@ -1,7 +1,7 @@
 import "reflect-metadata";
 
 import { injectable } from "inversify";
-import { PrismaService } from "@services/server/PrismaService";
+import { prismaService } from "@services/server/PrismaService";
 import { Prisma, User, Organization } from "@prisma/client";
 import ServerConfig from "@services/server/config/ServerConfig";
 import { OrganizationService } from "@services/server/organizations/Organization.service";
@@ -13,7 +13,6 @@ import { createPrismaAbility, PrismaAbility } from "@casl/prisma";
 @injectable()
 export class UserService {
   constructor(
-    private prismaService: PrismaService,
     private serverConfig: ServerConfig,
     private organizationService: OrganizationService,
   ) {}
@@ -23,7 +22,7 @@ export class UserService {
   }
 
   async getUserById(id: string, includeSensitive?: boolean) {
-    return this.prismaService.client.user.findUnique({
+    return prismaService.client.user.findUnique({
       where: {
         id,
       },
@@ -34,7 +33,7 @@ export class UserService {
   }
 
   async getUserByEmail(email: string) {
-    return this.prismaService.client.user.findUnique({
+    return prismaService.client.user.findUnique({
       where: {
         email,
       },
@@ -94,7 +93,7 @@ export class UserService {
   }
 
   async updateUser(id: string, data: Prisma.UserUpdateInput) {
-    return this.prismaService.client.user.update({
+    return prismaService.client.user.update({
       where: {
         id,
       },
@@ -103,7 +102,7 @@ export class UserService {
   }
 
   async createUser(data: Prisma.UserCreateInput) {
-    return this.prismaService.client.user.create({
+    return prismaService.client.user.create({
       data,
     });
   }

@@ -1,8 +1,10 @@
 import { OrganizationController } from "@services/server/organizations/Organization.controller";
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 
 export async function GET() {
-  const organizationController = serverContainer.get(OrganizationController);
+  const organizationController = inversifyServerContainer.get(
+    OrganizationController,
+  );
   return organizationController
     .getOrganizations()
     .then((x) => Response.json(x));

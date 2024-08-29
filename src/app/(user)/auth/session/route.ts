@@ -1,8 +1,8 @@
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { UserController } from "@services/server/users/User.controller";
 
 export async function GET() {
-  const userController = serverContainer.get(UserController);
+  const userController = inversifyServerContainer.get(UserController);
   const response = await userController.getSession();
   return Response.json(response);
 }

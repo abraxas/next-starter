@@ -2,12 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { Button, Heading, Stack } from "@chakra-ui/react";
 import { OrganizationController } from "@services/server/organizations/Organization.controller";
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import OrganizationTable from "@/app/(web)/sysadmin/organizations/components/OrganizationTable";
 import withAdminGuard from "@/lib/routeMiddleware/withAdminGuard";
 
 async function OrganizationPage() {
-  const organizationController = serverContainer.get(OrganizationController);
+  const organizationController = inversifyServerContainer.get(
+    OrganizationController,
+  );
   const organizations = await organizationController.getOrganizations();
   return (
     <div>

@@ -1,5 +1,5 @@
-import { serverContainer } from "@services/serverContainer";
-import { PrismaService } from "@services/server/PrismaService";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
+import { prismaService } from "@services/server/PrismaService";
 import { TimeSpan, createDate } from "oslo";
 import { generateRandomString, alphabet } from "oslo/crypto";
 import { z } from "zod";
@@ -8,7 +8,6 @@ import nodemailer from "nodemailer";
 import ServerConfig from "@services/server/config/ServerConfig";
 
 async function generateEmailCode(email: string, accountId?: string) {
-  const prismaService = serverContainer.get<PrismaService>(PrismaService);
   await prismaService.client.emailCode.deleteMany({
     where: {
       email: accountId ? undefined : email,
@@ -27,7 +26,7 @@ async function generateEmailCode(email: string, accountId?: string) {
 }
 
 async function sendCodeEmail(email: string, code: string) {
-  const config = serverContainer.get<ServerConfig>(ServerConfig);
+  const config = inversifyServerContainer.get<ServerConfig>(ServerConfig);
 
   // send email using nodemailer
   console.log(`Sending code ${code} to ${email}`);

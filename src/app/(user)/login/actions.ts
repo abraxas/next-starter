@@ -4,8 +4,8 @@ import { ActionResult } from "next/dist/server/app-render/types";
 import { lucia } from "@/lib/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { serverContainer } from "@services/serverContainer";
-import { PrismaService } from "@services/server/PrismaService";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
+import { prismaService } from "@services/server/PrismaService";
 import { actionClient } from "@/lib/safe-action";
 import { z } from "zod";
 import { createDate, TimeSpan } from "oslo";
@@ -16,7 +16,6 @@ import { alphabet, generateRandomString } from "oslo/crypto";
 export async function login(
   foo: any,
 ): Promise<ActionResult & { error?: string }> {
-  const prismaService = serverContainer.get<PrismaService>(PrismaService);
   const db = prismaService.client;
 
   const email = foo.get("email");
@@ -56,7 +55,6 @@ async function generateEmailCode(
   email: string,
   accountId?: string,
 ): Promise<string> {
-  const prismaService = serverContainer.get<PrismaService>(PrismaService);
   await prismaService.client.emailCode.deleteMany({
     where: {
       email: accountId ? undefined : email,
@@ -76,7 +74,7 @@ async function generateEmailCode(
 }
 
 async function sendCodeEmail(email: string, code: string) {
-  const config = serverContainer.get<ServerConfig>(ServerConfig);
+  const config = inversifyServerContainer.get<ServerConfig>(ServerConfig);
 
   // send email using nodemailer
   console.log(`Sending code ${code} to ${email}`);

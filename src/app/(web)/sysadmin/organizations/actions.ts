@@ -1,6 +1,6 @@
 "use server";
 
-import { serverContainer } from "@services/serverContainer";
+import { inversifyServerContainer } from "@services/inversifyServerContainer";
 import { OrganizationController } from "@services/server/organizations/Organization.controller";
 import { Prisma } from "@prisma/client";
 import { notFound, redirect } from "next/navigation";
@@ -22,7 +22,7 @@ export const updateOrganizationAction = actionClient
           updatedAt: new Date(),
         };
 
-        const organizationController = serverContainer.get(
+        const organizationController = inversifyServerContainer.get(
           OrganizationController,
         );
         const previousOrganization =
@@ -69,7 +69,9 @@ export const createOrganizationAction = actionClient
       updatedAt: new Date(),
     };
 
-    const organizationController = serverContainer.get(OrganizationController);
+    const organizationController = inversifyServerContainer.get(
+      OrganizationController,
+    );
     try {
       await organizationController.createOrganization(data);
     } catch (e: any) {
@@ -89,7 +91,9 @@ export const createOrganizationAction = actionClient
 export const archiveOrganization = actionClient
   .schema(z.object({ id: z.string() }))
   .action(async ({ parsedInput: { id } }) => {
-    const organizationController = serverContainer.get(OrganizationController);
+    const organizationController = inversifyServerContainer.get(
+      OrganizationController,
+    );
     await organizationController.archiveOrganization(id);
     revalidatePath(`/admin/organizations`);
     return { success: true };
