@@ -1,7 +1,6 @@
 import "reflect-metadata";
 
 import { PrismaClient } from "@prisma/client";
-import { injectable } from "inversify";
 
 const prismaClientSingleton = () => {
   return new PrismaClient();

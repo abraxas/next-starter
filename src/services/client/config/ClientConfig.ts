@@ -1,6 +1,5 @@
 import "reflect-metadata";
 
-import { injectable } from "inversify";
 import { z } from "zod";
 
 const ConfigSchema = z.object({

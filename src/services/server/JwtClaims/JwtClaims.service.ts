@@ -1,4 +1,3 @@
-import { injectable } from "inversify";
 import { z } from "zod";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";

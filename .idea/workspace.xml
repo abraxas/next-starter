@@ -6,29 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Finally removed inversify.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/user/current/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/google/callback/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/session/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/clientContainer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/inversifyServerContainer.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +40,7 @@
     "Jest.OrganizationService.should return default organization for single tenant.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "to__iti",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "javascript.nodejs.core.library.configured.version": "21.7.1",
     "javascript.nodejs.core.library.typings.version": "20.14.10",
@@ -306,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724955252924</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Finally removed inversify.">
+      <option name="closed" value="true" />
+      <created>1724957001672</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1724957001672</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

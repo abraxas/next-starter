@@ -1,6 +1,5 @@
 import "reflect-metadata";
 
-import { injectable } from "inversify";
 import { prismaService } from "@services/server/PrismaService";
 import { Prisma, User, Organization } from "@prisma/client";
 import { serverConfig } from "@services/server/config/ServerConfig";
