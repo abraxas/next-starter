@@ -13,10 +13,11 @@ import NewUserFormComponent from "@/app/(user)/auth/new-user/components/NewUserF
 export default async function NewUserPage() {
   //toast an error and return to home IFF there is no active NewUserclaim
   const jwtClaims = serverContainer.get(JwtClaimsService);
-  const rawclaim = await jwtClaims.getClaimFromCookie();
-  const claimdata = NewUserClaimSchema.safeParse(rawclaim);
+  const rawClaim = await jwtClaims.getRawClaimFromCookie();
+  const validatedClaim = await jwtClaims.getClaimFromCookie();
+  const claimdata = NewUserClaimSchema.safeParse(validatedClaim);
 
-  if (!claimdata.success) {
+  if (!rawClaim || !claimdata.success) {
     redirect("/");
   }
 
@@ -27,7 +28,7 @@ export default async function NewUserPage() {
       <NewUserRedirector claim={claim} />
       New User
       {JSON.stringify(claim)}
-      <NewUserFormComponent claim={claim} />
+      <NewUserFormComponent rawClaim={rawClaim} claim={claim} />
     </div>
   );
 }

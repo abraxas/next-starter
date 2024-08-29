@@ -12,8 +12,12 @@ import {
   ButtonGroup,
   HStack,
   Text,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
-import { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { User } from "@prisma/client";
 import { useFormState } from "react-dom";
 
@@ -21,6 +25,8 @@ interface ProfileFormProps<T extends Partial<User>> {
   user: T;
   onClose: () => void;
   onSubmit: any; //(state: {}, formData: FormData) => {} | Promise<{}>;
+
+  closeLabel?: string;
   hideImage?: boolean;
 }
 
@@ -28,6 +34,8 @@ export default function ProfileForm<T extends Partial<User>>({
   user,
   onClose,
   onSubmit,
+
+  closeLabel = "Close",
   hideImage,
 }: ProfileFormProps<T>) {
   const [name, setName] = useState(user.name);
@@ -40,15 +48,23 @@ export default function ProfileForm<T extends Partial<User>>({
     return user.image;
   }, [user?.image]);
   function getError(field: string) {
-    return state?.error?.fieldErrors[field] ?? [];
+    return state?.error?.fieldErrors?.[field] ?? [];
   }
   function isError(field: string) {
     return getError(field).length > 0;
   }
 
+  console.log({ state });
+
   return (
     <Stack spacing={4}>
       <form action={formAction}>
+        {state?.error?.formError ? (
+          <Alert status="error">
+            <AlertIcon />
+            <AlertDescription>{state.error.formError}</AlertDescription>
+          </Alert>
+        ) : null}
         <FormControl id="image" textAlign="center">
           {" "}
           {/* Center the profile image */}
@@ -94,7 +110,7 @@ export default function ProfileForm<T extends Partial<User>>({
             Save
           </Button>
           <Button flex={1} onClick={onClose}>
-            Close
+            {closeLabel}
           </Button>
         </Flex>
       </form>

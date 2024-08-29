@@ -104,6 +104,14 @@ export class JwtClaimsService {
     cookieStore.set("jwtclaim", jwtToken);
   }
 
+  public getRawClaimFromCookie() {
+    const cookieStore = cookies();
+    const token = cookieStore.get("jwtclaim");
+    if (token) {
+      return token.value;
+    }
+  }
+
   public getClaimFromCookie() {
     const cookieStore = cookies();
     const jwtToken = cookieStore.get("jwtclaim");

@@ -33,6 +33,14 @@ export class UserService {
     });
   }
 
+  async getUserByEmail(email: string) {
+    return this.prismaService.client.user.findUnique({
+      where: {
+        email,
+      },
+    });
+  }
+
   async getCurrentUser(includeSensitive?: boolean) {
     const session = await this.getUserSession();
     if (!session?.user?.id) return null;
@@ -90,6 +98,12 @@ export class UserService {
       where: {
         id,
       },
+      data,
+    });
+  }
+
+  async createUser(data: Prisma.UserCreateInput) {
+    return this.prismaService.client.user.create({
       data,
     });
   }

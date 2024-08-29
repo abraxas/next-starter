@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="It works.  Stop changing it.">
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/providers/client/RetoastProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/util/useRetoast.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/code/CodeForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/code/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/email/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/login/components/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserFormcomponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/ProfileModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/profile/components/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/server-providers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/models/validators/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/models/validators/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/config/ServerConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/serverContainer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/serverContainer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/JwtClaims/JwtClaims.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,11 +76,11 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\new-user\components" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\(email)" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(user)\auth\email" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)" />
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(api)\api\auth" />
-      <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\admin\organizations" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\NavContents.tsx" />
@@ -319,7 +302,6 @@
         <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="javascript">
           <url>file://$PROJECT_DIR$/src/services/client/config/ClientConfig.ts</url>
           <line>5</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
