@@ -33,12 +33,14 @@ import {
   FiBell,
 } from "react-icons/fi";
 import { IconType } from "react-icons";
-import UserDropdown, {
-  UserDropdownProps,
-} from "@/app/(web)/components/ChakraAppShell/UserDropdown";
+import UserDropdown, { UserProps } from "./UserDropdown";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useMemo } from "react";
+import { Organization, User } from "@prisma/client";
+import OrganizationPicker from "./OrganizationPicker";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { getCurrentOrganization } from "./actions";
 interface NavItemProps extends FlexProps {
   icon?: IconType;
   href?: string;
@@ -47,7 +49,7 @@ interface NavItemProps extends FlexProps {
 }
 
 interface MobileProps extends FlexProps {
-  userDropdownProps: UserDropdownProps;
+  user: User | null;
   onOpen: () => void;
 }
 
@@ -65,13 +67,23 @@ function linkToUniqueKey(link: LinkItemProps) {
 interface SidebarProps extends BoxProps {
   linkItems: Array<LinkItemProps>;
   onClose: () => void;
+  organizations: Array<Organization>;
+  currentOrganization?: Organization | null;
 }
 
 declare const window: any;
 
-const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
+const SidebarContent = ({
+  onClose,
+  linkItems,
+  organizations,
+  currentOrganization,
+  ...rest
+}: SidebarProps) => {
   const pathname = usePathname();
   const isActive = (href: string) => pathname === href;
+
+  const showOrganizationPicker = organizations.length > 1;
 
   return (
     <Box
@@ -90,6 +102,14 @@ const SidebarContent = ({ onClose, linkItems, ...rest }: SidebarProps) => {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      {showOrganizationPicker && (
+        <Box p={4}>
+          <OrganizationPicker
+            organizations={organizations}
+            currentOrganization={currentOrganization}
+          />
+        </Box>
+      )}
       {linkItems.map((link) => (
         <React.Fragment key={linkToUniqueKey(link)}>
           {link.type === "header" ? (
@@ -148,7 +168,7 @@ const NavItem = ({ href, icon, children, active, ...rest }: NavItemProps) => {
   );
 };
 
-const MobileNav = ({ onOpen, userDropdownProps, ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, user, ...rest }: MobileProps) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -185,8 +205,8 @@ const MobileNav = ({ onOpen, userDropdownProps, ...rest }: MobileProps) => {
           aria-label="open menu"
           icon={<FiBell />}
         />
-        {userDropdownProps.user ? (
-          <UserDropdown {...userDropdownProps} />
+        {user ? (
+          <UserDropdown user={user} />
         ) : (
           <Link href="/login">
             <Button colorScheme={"green"} variant={"solid"} type="submit">
@@ -201,13 +221,23 @@ const MobileNav = ({ onOpen, userDropdownProps, ...rest }: MobileProps) => {
 
 export type ChakraAppShellClientProps = {
   children: React.ReactNode;
-  userDropdownProps: UserDropdownProps;
+  user: User | null;
+  organizations: Array<Organization>;
+  //currentOrganization: Organization | null;
 };
 const ChakraAppShellClient = ({
   children,
-  userDropdownProps,
+  user,
+  organizations,
+  //currentOrganization,
 }: ChakraAppShellClientProps) => {
   const pathname = usePathname();
+
+  const uqr = useQuery({
+    queryKey: ["currentOrganization"],
+    queryFn: getCurrentOrganization,
+  });
+  const { data: currentOrganization, isLoading } = uqr;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const baseLinkItems: Array<LinkItemProps> = [
@@ -241,6 +271,8 @@ const ChakraAppShellClient = ({
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
         linkItems={linkItems}
+        organizations={organizations}
+        currentOrganization={currentOrganization}
       />
       <Drawer
         isOpen={isOpen}
@@ -251,11 +283,16 @@ const ChakraAppShellClient = ({
         size="full"
       >
         <DrawerContent>
-          <SidebarContent linkItems={linkItems} onClose={onClose} />
+          <SidebarContent
+            linkItems={linkItems}
+            onClose={onClose}
+            organizations={organizations}
+            currentOrganization={currentOrganization}
+          />
         </DrawerContent>
       </Drawer>
       {/* mobilenav */}
-      <MobileNav onOpen={onOpen} userDropdownProps={userDropdownProps} />
+      <MobileNav onOpen={onOpen} user={user} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>

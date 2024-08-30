@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client";
 import { z } from "zod";
 import { actionClient } from "@/lib/safe-action";
 import { revalidatePath } from "next/cache";
-import { organizationController } from "@services/server/organizations/Organization.controller";
+import { organizationAdminController } from "@services/server/organizations/Organization.Admin.controller";
 
 export const updateOrganizationAction = actionClient
   .schema(
@@ -21,7 +21,7 @@ export const updateOrganizationAction = actionClient
         };
 
         const previousOrganization =
-          await organizationController.getOrganizationById(id);
+          await organizationAdminController.getOrganizationById(id);
         if (!previousOrganization) throw new Error("Organization not found");
 
         const errors: Record<string, string> = {};
@@ -35,7 +35,7 @@ export const updateOrganizationAction = actionClient
 
         if (!id) throw new Error("id is required");
 
-        await organizationController.updateOrganization(id, data);
+        await organizationAdminController.updateOrganization(id, data);
         revalidatePath("/sysadmin/organizations");
         return { success: true };
       } catch (e: any) {
@@ -65,7 +65,7 @@ export const createOrganizationAction = actionClient
     };
 
     try {
-      await organizationController.createOrganization(data);
+      await organizationAdminController.createOrganization(data);
     } catch (e: any) {
       //Prisma P2002 is "unique constraint failed"
       if (e?.code === "P2002" && e?.meta?.target?.includes("slug")) {
@@ -83,7 +83,7 @@ export const createOrganizationAction = actionClient
 export const archiveOrganization = actionClient
   .schema(z.object({ id: z.string() }))
   .action(async ({ parsedInput: { id } }) => {
-    await organizationController.archiveOrganization(id);
+    await organizationAdminController.archiveOrganization(id);
     revalidatePath(`/admin/organizations`);
     return { success: true };
   });

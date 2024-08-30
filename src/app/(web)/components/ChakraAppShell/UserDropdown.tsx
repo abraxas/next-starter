@@ -22,7 +22,7 @@ import Link from "next/link";
 import { logout } from "@/app/(web)/components/ChakraAppShell/actions";
 import { useRouter } from "next/navigation";
 
-export type UserDropdownProps = {
+export type UserProps = {
   user: User | null;
   //organizations: Array<Organization>;
   //currentOrganization?: Organization;
@@ -33,7 +33,7 @@ export default function UserDropdown({
   //organizations,
   //currentOrganization,
   //handleOrganizationPickerChange,
-}: UserDropdownProps) {
+}: UserProps) {
   const router = useRouter();
 
   async function logoutClicked() {

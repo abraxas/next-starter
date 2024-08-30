@@ -29,7 +29,6 @@ export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <React.Fragment>
       <QueryClientProvider client={queryClient}>
-        <RetoastProvider />
         <ColorModeScript />
         <ChakraProvider theme={theme}>{children}</ChakraProvider>
       </QueryClientProvider>

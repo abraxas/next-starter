@@ -1,7 +1,7 @@
-import { organizationController } from "@services/server/organizations/Organization.controller";
+import { organizationAdminController } from "@services/server/organizations/Organization.Admin.controller";
 
 export async function GET() {
-  return organizationController
+  return organizationAdminController
     .getOrganizations()
     .then((x) => Response.json(x));
 }

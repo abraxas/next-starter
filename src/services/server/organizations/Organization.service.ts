@@ -4,14 +4,21 @@ import {
   prismaService,
   type PrismaService,
 } from "@services/server/PrismaService";
-import { Prisma, Organization } from "@prisma/client";
+import { Prisma, Organization, User } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 import { PureAbility } from "@casl/ability";
 import { accessibleBy, PrismaQuery } from "@casl/prisma";
 import { serverConfig } from "@services/server/config/ServerConfig";
-import { cookies } from "next/headers";
+import { Memoize } from "typescript-memoize";
+import { Singleton } from "@/lib/decorators/scope_decorators";
 
+@Singleton
 export class OrganizationService {
+  @Memoize()
+  public static get instance() {
+    return new OrganizationService();
+  }
+
   private serverConfig: typeof serverConfig;
   private prismaService: PrismaService;
 
@@ -112,33 +119,34 @@ export class OrganizationService {
     return defaultOrganization;
   }
 
-  async getPersonalOrganization(userId: string) {
+  async getPersonalOrganization(user: User) {
+    const userId = user.id;
     const personalOrganizationName =
       this.serverConfig.personalOrganizationName ?? "Personal";
-    const personalOrganizationSlug = userId;
+    const personalOrganizationSlug = `Personal_${userId}`;
     const personalOrganization =
       await this.prismaService.client.organization.findUnique({
         where: { slug: personalOrganizationSlug },
       });
     if (!personalOrganization) {
-      return this.createOrganization({
-        name: personalOrganizationName,
-        slug: personalOrganizationSlug,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      });
+      if (serverConfig.automaticallyCreatePersonalOrganization) {
+        return this.createOrganization({
+          name: personalOrganizationName,
+          slug: personalOrganizationSlug,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          organizationUsers: {
+            create: {
+              userId,
+              role: "owner",
+              name: user.name,
+            },
+          },
+        });
+      }
+      return null;
     }
     return personalOrganization;
-  }
-
-  async getCurrentOrganization() {
-    const organizationId = cookies().get("organizationId");
-    if (!organizationId?.value) return undefined;
-    return this.getOrganizationById(organizationId.value);
-  }
-
-  async setCurrentOrganization(organizationId: string) {
-    cookies().set("organizationId", organizationId);
   }
 }
 

@@ -1,7 +1,12 @@
 import ChakraAppShellClient from "@/app/(web)/components/ChakraAppShell/ChakraAppShell.Client";
 import { userService } from "@services/server/users/User.service";
-import { organizationService } from "@services/server/organizations/Organization.service";
-import { UserDropdownProps } from "@/app/(web)/components/ChakraAppShell/UserDropdown";
+import { organizationController } from "@services/server/organizations/Organization.controller";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import { getCurrentOrganization } from "./ChakraAppShell/actions";
 
 export default async function ChakraAppShell({
   children,
@@ -9,25 +14,26 @@ export default async function ChakraAppShell({
   children: React.ReactNode;
 }) {
   const user = await userService.getCurrentUser();
-
   const status = user ? "authenticated" : "unauthenticated";
 
-  const organizations = await organizationService.getOrganizations();
-  const currentOrganization =
-    await organizationService.getCurrentOrganization();
+  const organizations =
+    await organizationController.getAvailableOrganizations();
 
-  const userDropdownProps: UserDropdownProps = {
-    user,
-    //organizations,
-    //currentOrganization,
-    //handleOrganizationPickerChange: async () => {
-    //  await organizationService.setCurrentOrganization;
-    //},
-  };
+  const queryClient = new QueryClient();
+  queryClient.prefetchQuery({
+    queryKey: ["currentOrganization"],
+    queryFn: getCurrentOrganization,
+  });
 
   return (
-    <ChakraAppShellClient userDropdownProps={userDropdownProps}>
-      {children}
-    </ChakraAppShellClient>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ChakraAppShellClient
+        user={user}
+        organizations={organizations}
+        //currentOrganization={currentOrganization}
+      >
+        {children}
+      </ChakraAppShellClient>
+    </HydrationBoundary>
   );
 }

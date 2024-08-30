@@ -1,42 +1,81 @@
-import "reflect-metadata";
-
-import { Prisma } from "@prisma/client";
-import { organizationService } from "@services/server/organizations/Organization.service";
+import {
+  OrganizationService,
+  organizationService,
+} from "@services/server/organizations/Organization.service";
 import { userService } from "@services/server/users/User.service";
+import {
+  ICookiesProvider,
+  readonlyCookiesProvider,
+} from "@services/server/cookies/Cookies.provider";
+
+type OrganizationDependencies = {
+  cookieProvider: ICookiesProvider;
+};
 
 export class OrganizationController {
   private organizationService: typeof organizationService;
   private userService: typeof userService;
+  private cookies: ICookiesProvider;
 
-  constructor() {
+  constructor(deps?: OrganizationDependencies) {
     this.userService = userService;
-    this.organizationService = organizationService;
+    this.organizationService = OrganizationService.instance;
+    this.cookies = deps?.cookieProvider ?? readonlyCookiesProvider;
   }
 
-  async getOrganizations({ showArchived }: { showArchived?: boolean } = {}) {
-    const ability = await this.userService.getCurrentUserAbility();
-    await this.userService.assertCurrentUserIsAdmin(ability);
-    return this.organizationService.getOrganizations({ showArchived, ability });
+  async getAvailableOrganizations() {
+    const ability = await this.userService.getCurrentUserAbility(false);
+    return this.organizationService.getOrganizations({ ability });
   }
 
-  async getOrganizationById(id: string) {
-    await this.userService.assertCurrentUserIsAdmin();
-    return this.organizationService.getOrganizationById(id);
+  async getCurrentOrganization() {
+    console.log("GCO");
+    let user: any;
+    console.log({ this: this });
+    try {
+      user = await this.userService.getCurrentUser();
+    } catch (e) {
+      console.log({ error: e });
+      throw e;
+    }
+    console.log({ user });
+    if (!user) return undefined;
+    console.log("USE ME");
+
+    const organizationId = this.cookies.get("organizationId");
+
+    console.log({ organizationId });
+
+    if (organizationId) {
+      const selectedOrganization =
+        await this.organizationService.getOrganizationById(organizationId);
+      if (selectedOrganization) return selectedOrganization;
+    }
+    console.log("123");
+
+    const personalOrganization =
+      await this.organizationService.getPersonalOrganization(user);
+    if (personalOrganization) {
+      await this.setCurrentOrganization(personalOrganization.id);
+      return personalOrganization;
+    }
+    console.log("321");
+    const organizations = await this.getAvailableOrganizations();
+    console.log({ organizations });
+    if (organizations.length) {
+      console.log("DUH");
+      await this.setCurrentOrganization(organizations[0].id);
+      console.log("ANDRETURN");
+      return organizations[0];
+    }
+    return null;
   }
 
-  async updateOrganization(id: string, data: Prisma.OrganizationUpdateInput) {
-    await this.userService.assertCurrentUserIsAdmin();
-    return this.organizationService.updateOrganization(id, data);
-  }
-
-  async createOrganization(data: Prisma.OrganizationCreateInput) {
-    await this.userService.assertCurrentUserIsAdmin();
-    return this.organizationService.createOrganization(data);
-  }
-
-  async archiveOrganization(id: string) {
-    await this.userService.assertCurrentUserIsAdmin();
-    return this.organizationService.archiveOrganization(id);
+  async setCurrentOrganization(organizationId: string) {
+    if (this.cookies.canSet) {
+      this.cookies.set("organizationId", organizationId);
+    }
   }
 }
+
 export const organizationController = new OrganizationController();

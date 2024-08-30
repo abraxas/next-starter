@@ -4,8 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Finally removed inversify.">
+    <list default="true" id="a0b85463-bc1f-4b35-8872-5b7a2ac09c5c" name="Changes" comment="Progress and cleanup for actions.  I started to move towards singletons, but realized I didn't need them yet.">
+      <change afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/OrganizationPicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/providers/inner-client-providers.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/decorators/scope_decorators.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/server/cookies/Cookies.provider.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.Admin.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(api)/api/admin/organizations/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(user)/auth/new-user/components/NewUserRedirector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/ChakraAppShell.Client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/UserDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(web)/sysadmin/organizations/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/client-providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/providers/providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/providers/providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/organizations/Organization.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/server/users/User.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/server/users/User.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +106,7 @@
       <recent name="\\wsl.localhost\Ubuntu\home\cjay\projects\next-start\src\app\(web)\components\Nav\MobileNav.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Organization.service.spec.ts">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -291,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724957001672</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Removed some stray inversify imports">
+      <option name="closed" value="true" />
+      <created>1724957655902</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1724957655902</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +350,9 @@
     <MESSAGE value="Step 1 on removing DI.  Org Service works without injected Prisma." />
     <MESSAGE value="Removed almost all remaining services" />
     <MESSAGE value="Finally removed inversify." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally removed inversify." />
+    <MESSAGE value="Removed some stray inversify imports" />
+    <MESSAGE value="Progress and cleanup for actions.  I started to move towards singletons, but realized I didn't need them yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Progress and cleanup for actions.  I started to move towards singletons, but realized I didn't need them yet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -339,7 +370,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="javascript">
           <url>file://$PROJECT_DIR$/src/services/client/config/ClientConfig.ts</url>
-          <line>5</line>
+          <line>4</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -347,6 +378,18 @@
           <line>2</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/(web)/components/ChakraAppShell/actions.ts</url>
+          <line>12</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

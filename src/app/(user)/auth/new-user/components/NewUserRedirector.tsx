@@ -15,14 +15,6 @@ export default function NewUserRedirector({ claim }: NewUserRedirectorProps) {
 
   useEffect(() => {
     if (!claim || claim.type !== "new_user") {
-      console.log("REDIRECTING");
-      console.dir({
-        title: "Error",
-        description: "An error occurred.  Please try again later.",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
       retoast({
         title: "Error",
         description: "An error occurred.  Please try again later.",
