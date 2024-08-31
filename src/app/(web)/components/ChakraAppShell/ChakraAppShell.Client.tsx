@@ -2,12 +2,10 @@
 
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
   HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Text,
@@ -16,11 +14,6 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
   Button,
   Heading,
 } from "@chakra-ui/react";
@@ -81,9 +74,8 @@ const SidebarContent = ({
   ...rest
 }: SidebarProps) => {
   const pathname = usePathname();
-  const isActive = (href: string) => pathname === href;
 
-  const showOrganizationPicker = organizations.length > 1;
+  const isActive = (href: string) => pathname === href;
 
   return (
     <Box
@@ -102,14 +94,9 @@ const SidebarContent = ({
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {showOrganizationPicker && (
-        <Box p={4}>
-          <OrganizationPicker
-            organizations={organizations}
-            currentOrganization={currentOrganization}
-          />
-        </Box>
-      )}
+      <Box p={4}>
+        <OrganizationPicker organizations={organizations} />
+      </Box>
       {linkItems.map((link) => (
         <React.Fragment key={linkToUniqueKey(link)}>
           {link.type === "header" ? (
@@ -233,11 +220,12 @@ const ChakraAppShellClient = ({
 }: ChakraAppShellClientProps) => {
   const pathname = usePathname();
 
-  const uqr = useQuery({
+  const { data: currentOrganization, isLoading } = useSuspenseQuery({
     queryKey: ["currentOrganization"],
-    queryFn: getCurrentOrganization,
+    queryFn: () => getCurrentOrganization(),
   });
-  const { data: currentOrganization, isLoading } = uqr;
+  console.log("THIS CURRENT IS " + currentOrganization?.id);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const baseLinkItems: Array<LinkItemProps> = [

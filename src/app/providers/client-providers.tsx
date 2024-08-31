@@ -6,6 +6,7 @@ import { ColorModeScript } from "@chakra-ui/react";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RetoastProvider from "@/app/providers/client/RetoastProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const theme = extendTheme({
   colors: {
@@ -23,14 +24,15 @@ const theme = extendTheme({
     },
   },
 });
-export function ClientProviders({ children }: { children: React.ReactNode }) {
-  const queryClient = new QueryClient();
+const queryClient = new QueryClient();
 
+export function ClientProviders({ children }: { children: React.ReactNode }) {
   return (
     <React.Fragment>
       <QueryClientProvider client={queryClient}>
         <ColorModeScript />
         <ChakraProvider theme={theme}>{children}</ChakraProvider>
+        <ReactQueryDevtools />
       </QueryClientProvider>
     </React.Fragment>
   );

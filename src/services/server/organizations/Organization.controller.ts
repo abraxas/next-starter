@@ -3,24 +3,19 @@ import {
   organizationService,
 } from "@services/server/organizations/Organization.service";
 import { userService } from "@services/server/users/User.service";
-import {
-  ICookiesProvider,
-  readonlyCookiesProvider,
-} from "@services/server/cookies/Cookies.provider";
-
-type OrganizationDependencies = {
-  cookieProvider: ICookiesProvider;
-};
+import { subject } from "@casl/ability";
+import { prismaService, PrismaService } from "@services/server/PrismaService";
+import { Organization, User } from "@prisma/client";
 
 export class OrganizationController {
   private organizationService: typeof organizationService;
   private userService: typeof userService;
-  private cookies: ICookiesProvider;
+  private prismaService: PrismaService;
 
-  constructor(deps?: OrganizationDependencies) {
+  constructor() {
     this.userService = userService;
     this.organizationService = OrganizationService.instance;
-    this.cookies = deps?.cookieProvider ?? readonlyCookiesProvider;
+    this.prismaService = prismaService;
   }
 
   async getAvailableOrganizations() {
@@ -28,52 +23,48 @@ export class OrganizationController {
     return this.organizationService.getOrganizations({ ability });
   }
 
-  async getCurrentOrganization() {
-    console.log("GCO");
-    let user: any;
-    console.log({ this: this });
-    try {
-      user = await this.userService.getCurrentUser();
-    } catch (e) {
-      console.log({ error: e });
-      throw e;
-    }
-    console.log({ user });
-    if (!user) return undefined;
-    console.log("USE ME");
+  async getCurrentOrganization(): Promise<Organization | null> {
+    const sessionData = await this.userService.getUserSession();
+    if (!sessionData.user || !sessionData.session) return null;
 
-    const organizationId = this.cookies.get("organizationId");
-
-    console.log({ organizationId });
+    const organizationId = sessionData.session.organizationId;
 
     if (organizationId) {
       const selectedOrganization =
         await this.organizationService.getOrganizationById(organizationId);
+      const ability = await this.userService.getCurrentUserAbility(false);
+      if (!ability) throw new Error("No ability found");
+      if (
+        ability.cannot("read", subject("Organization", selectedOrganization))
+      ) {
+        await this.setCurrentOrganization(null);
+        return this.getCurrentOrganization();
+      }
       if (selectedOrganization) return selectedOrganization;
     }
-    console.log("123");
 
     const personalOrganization =
-      await this.organizationService.getPersonalOrganization(user);
+      await this.organizationService.getPersonalOrganization(sessionData.user);
     if (personalOrganization) {
       await this.setCurrentOrganization(personalOrganization.id);
+
       return personalOrganization;
     }
-    console.log("321");
     const organizations = await this.getAvailableOrganizations();
-    console.log({ organizations });
     if (organizations.length) {
-      console.log("DUH");
       await this.setCurrentOrganization(organizations[0].id);
-      console.log("ANDRETURN");
       return organizations[0];
     }
     return null;
   }
 
-  async setCurrentOrganization(organizationId: string) {
-    if (this.cookies.canSet) {
-      this.cookies.set("organizationId", organizationId);
+  async setCurrentOrganization(organizationId: string | null) {
+    const sessionData = await this.userService.getUserSession();
+    if (sessionData.session?.organizationId !== organizationId) {
+      await this.prismaService.client.session.update({
+        where: { id: sessionData.session?.id },
+        data: { organizationId },
+      });
     }
   }
 }

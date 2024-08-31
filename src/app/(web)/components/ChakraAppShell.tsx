@@ -7,6 +7,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { getCurrentOrganization } from "./ChakraAppShell/actions";
+import { queryClient } from "@/lib/serverQueryClient";
 
 export default async function ChakraAppShell({
   children,
@@ -19,19 +20,18 @@ export default async function ChakraAppShell({
   const organizations =
     await organizationController.getAvailableOrganizations();
 
-  const queryClient = new QueryClient();
-  queryClient.prefetchQuery({
+  console.log({ organizations });
+
+  await queryClient.prefetchQuery({
     queryKey: ["currentOrganization"],
-    queryFn: getCurrentOrganization,
+    queryFn: () => getCurrentOrganization(),
   });
+  const data = queryClient.getQueryData(["currentOrganization"]);
+  console.log("PREFETCHING! ", data?.id);
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <ChakraAppShellClient
-        user={user}
-        organizations={organizations}
-        //currentOrganization={currentOrganization}
-      >
+      <ChakraAppShellClient user={user} organizations={organizations}>
         {children}
       </ChakraAppShellClient>
     </HydrationBoundary>

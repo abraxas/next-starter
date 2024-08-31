@@ -53,11 +53,13 @@ model Account {
 }
 
 model Session {
-  id        String   @id
-  userId    String
-  expiresAt DateTime
+  id             String   @id
+  organizationId String?
+  userId         String
+  expiresAt      DateTime
 
-  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+  user         User          @relation(references: [id], fields: [userId], onDelete: Cascade)
+  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
 
   @@schema("public")
 }
@@ -141,6 +143,7 @@ model Organization {
   updatedAt         DateTime
   archived          Boolean            @default(false)
   organizationUsers OrganizationUser[]
+  Session           Session[]
 
   @@schema("public")
 }

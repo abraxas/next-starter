@@ -1,5 +1,4 @@
 "use client";
-import { revalidatePath } from "next/cache";
 
 import { useFormState } from "react-dom";
 import {
@@ -16,7 +15,7 @@ import {
   Input,
   Stack,
 } from "@chakra-ui/react";
-import { Organization } from "@prisma/client";
+import { Organization, Prisma } from "@prisma/client";
 import Link from "next/link";
 import { createOrganizationAction, updateOrganizationAction } from "../actions";
 import { useAction } from "next-safe-action/hooks";
@@ -34,6 +33,7 @@ type FormProps = {
   readonly?: boolean;
   onCancel?: () => void;
   onSuccess?: () => void;
+  onSubmit?: (data: { slug: string; name: string }) => Promise<any>;
 };
 
 type ActionStateType = {
@@ -54,18 +54,21 @@ export default function OrganizationForm({
   readonly,
   onCancel,
   onSuccess,
+  onSubmit,
 }: FormProps) {
   const router = useRouter();
   const isEdit = !!id;
 
   const [state, setState] = useState<ActionStateType | undefined>(initialState);
-  async function onSubmit(formData: FormData) {
-    const handler = isEdit
-      ? updateOrganizationAction.bind(null, id)
-      : createOrganizationAction;
+  async function handleSubmit(formData: FormData) {
+    const handler =
+      onSubmit ??
+      (isEdit
+        ? updateOrganizationAction.bind(null, id)
+        : createOrganizationAction);
     const data = {
-      slug: formData.get("slug")?.toString(),
-      name: formData.get("name")?.toString(),
+      slug: formData.get("slug")?.toString() ?? "",
+      name: formData.get("name")?.toString() ?? "",
     };
 
     const result = await handler(data);
@@ -80,10 +83,10 @@ export default function OrganizationForm({
     setState(result?.data);
   }
 
-  //const { execute, result: state } = useAction(onSubmit);
+  //const { execute, result: state } = useAction(handleSubmit);
 
   return (
-    <form action={onSubmit}>
+    <form action={handleSubmit}>
       <Stack spacing={3}>
         <Card flex={1} maxW={"lg"}>
           <CardBody>

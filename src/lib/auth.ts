@@ -13,6 +13,10 @@ declare module "lucia" {
   interface Register {
     Lucia: typeof lucia;
     DatabaseUserAttributes: Omit<UserModel, "id">;
+    DatabaseSessionAttributes: {
+      userId: string;
+      organizationId?: string;
+    };
   }
 }
 
@@ -24,10 +28,19 @@ export const lucia = new Lucia(adapter, {
   },
   getUserAttributes: (attributes) => {
     return {
+      name: attributes.name,
       email: attributes.email,
-      email_verified: attributes.emailVerified,
+      emailVerified: attributes.emailVerified,
       image: attributes.image,
+      createdAt: attributes.createdAt,
+      updatedAt: attributes.updatedAt,
       //fnord: attributes,
+    };
+  },
+  getSessionAttributes: (attributes) => {
+    return {
+      userId: attributes.userId,
+      organizationId: attributes.organizationId,
     };
   },
 });

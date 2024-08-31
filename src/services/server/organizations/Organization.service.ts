@@ -39,8 +39,13 @@ export class OrganizationService {
     }
 
     const abilityFilters = [];
+
     if (ability) {
-      abilityFilters.push(accessibleBy(ability).Organization);
+      if (ability.can("read", "Organization")) {
+        abilityFilters.push(accessibleBy(ability).Organization);
+      } else {
+        return [];
+      }
     }
 
     const organizations = await this.prismaService.client.organization.findMany(
@@ -50,6 +55,7 @@ export class OrganizationService {
         },
       },
     );
+
     if (!organizations.length) {
       return [await this.getDefaultOrganization()];
     }
